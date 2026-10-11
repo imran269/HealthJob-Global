@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HealthJob Global | Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#0b2545;--teal:#16a6a6;--bg:#f3f7fa;--border:#dce6ed}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#263238}
+header{background:var(--navy);color:white;padding:18px}
+header div{max-width:950px;margin:auto;font-size:21px;font-weight:bold}
+header span{color:#69e0d8}
+main{max-width:950px;margin:25px auto;padding:0 15px}
+.panel{background:white;border:1px solid var(--border);border-radius:13px;padding:22px;margin-bottom:20px}
+h2{color:var(--navy);margin-top:0}
+label{display:block;font-weight:bold;font-size:14px;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd8e1;border-radius:7px;font:inherit;background:white}
+textarea{min-height:90px;resize:vertical}
+button,.btn{border:0;border-radius:7px;padding:11px 15px;background:var(--teal);color:white;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
+.secondary{background:var(--navy)}
+.danger{background:#b42332}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.job{border:1px solid var(--border);border-radius:9px;padding:15px;margin-top:12px;overflow-wrap:anywhere}
+.job h3{margin:0 0 5px;color:var(--navy)}
+.muted{color:#607d8b;font-size:14px}
+.message{margin:12px 0;padding:10px;border-radius:7px;background:#eef5f9;overflow-wrap:anywhere}
+.hidden{display:none!important}
+a{color:#087f87}
+@media(max-width:600px){.row{grid-template-columns:1fr}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header><div>HealthJob <span>Global</span> — Admin</div></header>
+
+<main>
+  <section class="panel" id="loginPanel">
+    <h2>Admin Login</h2>
+    <p class="muted">Sign in with your authorized administrator account.</p>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <div class="actions">
+        <button type="submit" id="loginBtn">Login</button>
+      </div>
+    </form>
+    <div id="loginMessage" class="message hidden"></div>
+  </section>
+
+  <section id="adminPanel" class="hidden">
+    <div class="panel">
+      <h2>Job Management</h2>
+      <p class="muted">Add a vacancy or select an existing listing to edit or delete it.</p>
+      <p id="welcome" class="muted"></p>
+      <div class="actions">
+        <button type="button" id="newJobBtn">+ New Job</button>
+        <button type="button" class="secondary" id="refreshBtn">Refresh Jobs</button>
+        <button type="button" class="secondary" id="logoutBtn">Logout</button>
+      </div>
+      <div id="adminMessage" class="message hidden"></div>
+    </div>
+
+    <div class="panel" id="formPanel">
+      <h2 id="formTitle">Add a Job</h2>
+      <form id="jobForm">
+        <input type="hidden" id="jobId">
+
+        <label for="title">Job Title *</label>
+        <input id="title" required maxlength="200" placeholder="e.g. Staff Nurse">
+
+        <label for="hospital">Hospital / Employer</label>
+        <input id="hospital" maxlength="200" placeholder="Employer name">
+
+        <div class="row">
+          <div>
+            <label for="country">Country *</label>
+            <select id="country" required>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="UAE">UAE</option>
+              <option value="Saudi Arabia">Saudi Arabia</option>
+              <option value="Qatar">Qatar</option>
+              <option value="Oman">Oman</option>
+              <option value="Kuwait">Kuwait</option>
+              <option value="Bahrain">Bahrain</option>
+            </select>
+          </div>
+          <div>
+            <label for="jobType">Job Type</label>
+            <select id="jobType">
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Internship">Internship</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="salary">Salary</label>
+            <input id="salary" maxlength="100" placeholder="e.g. As per employer">
+          </div>
+          <div>
+            <label for="deadline">Application Deadline</label>
+            <input id="deadline" type="date">
+          </div>
+        </div>
+
+        <label for="qualification">Required Qualification</label>
+        <textarea id="qualification" maxlength="3000" placeholder="Required degree, registration, experience..."></textarea>
+
+        <label for="description">Job Description</label>
+        <textarea id="description" maxlength="10000" placeholder="Responsibilities and other details..."></textarea>
+
+        <label for="applyUrl">Official Application URL</label>
+        <input id="applyUrl" type="url" maxlength="1000" placeholder="https://official-employer.example/apply">
+
+        <div class="actions">
+          <button type="submit" id="saveBtn">Save Job</button>
+          <button type="button" class="secondary" id="cancelBtn">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Existing Jobs</h2>
+      <div id="jobsList" class="muted">Loading jobs...</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = "https://hzotapptnaystuwvkbvx.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_UhWE93qD1gEx-oWoyRXF8w_w_CrxeUa";
+const ADMIN_UID = "5d09d097-14db-4a4d-826d-9e327112f579";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const $ = id => document.getElementById(id);
+let currentUser = null;
+
+function showMessage(id, message) {
+  $(id).textContent = message;
+  $(id).classList.remove("hidden");
+}
+
+function clearMessage(id) {
+  $(id).textContent = "";
+  $(id).classList.add("hidden");
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  })[char]);
+}
+
+function validURL(value) {
+  if (!value) return "";
+  try {
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+  } catch (_) {
+    return "";
+  }
+}
+
+function showLogin() {
+  $("loginPanel").classList.remove("hidden");
+  $("adminPanel").classList.add("hidden");
+}
+
+function showAdmin() {
+  $("loginPanel").classList.add("hidden");
+  $("adminPanel").classList.remove("hidden");
+  $("welcome").textContent = "Signed in as " + currentUser.email;
+  loadJobs();
+}
+
+async function checkSession() {
+  const { data, error } = await db.auth.getSession();
+  if (error) {
+    showLogin();
+    showMessage("loginMessage", error.message);
+    return;
+  }
+
+  const user = data.session?.user;
+
+  if (user && user.id === ADMIN_UID) {
+    currentUser = user;
+    showAdmin();
+  } else {
+    if (user) await db.auth.signOut();
+    showLogin();
+  }
+}
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  clearMessage("loginMessage");
+  $("loginBtn").disabled = true;
+  $("loginBtn").textContent = "Signing in...";
+
+  try {
+    const { data, error } = await db.auth.signInWithPassword({
+      email: $("email").value.trim(),
+      password: $("password").value
+    });
+
+    if (error) throw error;
+
+    if (data.user?.id !== ADMIN_UID) {
+      await db.auth.signOut();
+      throw new Error("This account is not authorized as the site admin.");
+    }
+
+    currentUser = data.user;
+    $("password").value = "";
+    showAdmin();
+  } catch (error) {
+    showMessage("loginMessage", error.message || "Login failed.");
+  } finally {
+    $("loginBtn").disabled = false;
+    $("loginBtn").textContent = "Login";
+  }
+});
+
+async function loadJobs() {
+  $("jobsList").textContent = "Loading jobs...";
+  const { data, error } = await db
+    .from("jobs")
+    .select("id,title,hospital_name,country,job_type,salary,qualification,description,apply_url,deadline,created_at")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    $("jobsList").textContent = "Could not load jobs: " + error.message;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    $("jobsList").textContent = "No jobs in the database yet.";
+    return;
+  }
+
+  $("jobsList").innerHTML = data.map(job => `
+    <article class="job">
+      <h3>${escapeHTML(job.title)}</h3>
+      <div class="muted">${escapeHTML(job.hospital_name)} · ${escapeHTML(job.country)}</div>
+      <p class="muted">Salary: ${escapeHTML(job.salary || "Not specified")}
+      · Deadline: ${escapeHTML(job.deadline || "Not specified")}</p>
+      <div class="actions">
+        <button type="button" class="edit-btn" data-id="${escapeHTML(job.id)}">Edit</button>
+        <button type="button" class="danger delete-btn" data-id="${escapeHTML(job.id)}">Delete</button>
+      </div>
+    </article>
+  `).join("");
+
+  $("jobsList").querySelectorAll(".edit-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const job = data.find(item => String(item.id) === button.dataset.id);
+      if (job) editJob(job);
+    });
+  });
+
+  $("jobsList").querySelectorAll(".delete-btn").forEach(button => {
+    button.addEventListener("click", () => deleteJob(button.dataset.id));
+  });
+}
+
+function editJob(job) {
+  $("jobId").value = job.id;
+  $("title").value = job.title || "";
+  $("hospital").value = job.hospital_name || "";
+  $("country").value = job.country || "Bangladesh";
+  $("jobType").value = job.job_type || "Full-time";
+  $("salary").value = job.salary || "";
+  $("deadline").value = job.deadline || "";
+  $("qualification").value = job.qualification || "";
+  $("description").value = job.description || "";
+  $("applyUrl").value = job.apply_url || "";
+  $("formTitle").textContent = "Edit Job";
+  $("saveBtn").textContent = "Update Job";
+  $("formPanel").scrollIntoView({ behavior: "smooth" });
+}
+
+function clearForm() {
+  $("jobForm").reset();
+  $("jobId").value = "";
+  $("formTitle").textContent = "Add a Job";
+  $("saveBtn").textContent = "Save Job";
+}
+
+$("newJobBtn").addEventListener("click", () => {
+  clearForm();
+  $("formPanel").scrollIntoView({ behavior: "smooth" });
+});
+
+$("cancelBtn").addEventListener("click", clearForm);
+$("refreshBtn").addEventListener("click", loadJobs);
+
+$("jobForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  clearMessage("adminMessage");
+
+  if (!currentUser || currentUser.id !== ADMIN_UID) {
+    showMessage("adminMessage", "Please log in with the authorized admin account.");
+    return;
+  }
+
+  const applyValue = $("applyUrl").value.trim();
+  if (applyValue && !validURL(applyValue)) {
+    showMessage("adminMessage", "Enter a valid http:// or https:// application URL.");
+    return;
+  }
+
+  const job = {
+    title: $("title").value.trim(),
+    hospital_name: $("hospital").value.trim() || null,
+    country: $("country").value,
+    job_type: $("jobType").value,
+    salary: $("salary").value.trim() || null,
+    qualification: $("qualification").value.trim() || null,
+    description: $("description").value.trim() || null,
+    apply_url: applyValue || null,
+    deadline: $("deadline").value || null
+  };
+
+  if (!job.title) {
+    showMessage("adminMessage", "Job title is required.");
+    return;
+  }
+
+  $("saveBtn").disabled = true;
+
+  try {
+    const id = $("jobId").value;
+    let result;
+
+    if (id) {
+      result = await db.from("jobs").update(job).eq("id", id);
+    } else {
+      result = await db.from("jobs").insert({
+        ...job,
+        created_by: currentUser.id
+      });
+    }
+
+    if (result.error) throw result.error;
+
+    showMessage("adminMessage", id ? "Job updated successfully." : "Job added successfully.");
+    clearForm();
+    await loadJobs();
+  } catch (error) {
+    showMessage("adminMessage", "Save failed: " + (error.message || "Unknown error"));
+  } finally {
+    $("saveBtn").disabled = false;
+  }
+});
+
+async function deleteJob(id) {
+  if (!currentUser || currentUser.id !== ADMIN_UID) return;
+  if (!confirm("Delete this job permanently?")) return;
+
+  const { error } = await db.from("jobs").delete().eq("id", id);
+
+  if (error) {
+    showMessage("adminMessage", "Delete failed: " + error.message);
+    return;
+  }
+
+  showMessage("adminMessage", "Job deleted.");
+  await loadJobs();
+}
+
+$("logoutBtn").addEventListener("click", async () => {
+  await db.auth.signOut();
+  currentUser = null;
+  showLogin();
+});
+
+checkSession();
+</script>
+</body>
+        </html>
