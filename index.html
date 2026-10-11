@@ -1,445 +1,604 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>HealthJob Global | Healthcare Careers Worldwide</title>
-  <meta name="description" content="Explore healthcare and nursing career opportunities in Bangladesh, UAE, Saudi Arabia and other Gulf countries.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find nursing and healthcare jobs in Bangladesh and Gulf countries.">
+  <title>HealthJob Global | Healthcare Careers</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --navy: #0b2545;
+      --blue: #123f66;
+      --teal: #16a6a6;
+      --light: #eef5f9;
+      --text: #263238;
+      --muted: #607d8b;
+      --border: #dce6ed;
+      --white: #fff;
     }
 
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #17324d;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7fafc;
+      color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      background: #0b3157;
-      color: white;
-      padding: 20px 6%;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
 
     .nav {
+      max-width: 1120px;
+      margin: auto;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #35d0c0;
-    }
-
-    .nav a {
-      color: white;
+    .brand {
+      color: var(--navy);
+      font-size: 21px;
+      font-weight: 800;
       text-decoration: none;
-      margin-left: 16px;
-      font-size: 14px;
+    }
+
+    .brand span { color: var(--teal); }
+
+    .nav-link {
+      color: var(--blue);
+      font-weight: bold;
+      text-decoration: none;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0b3157, #126b83);
+      background: linear-gradient(135deg, #0b2545, #145b78);
       color: white;
-      padding: 55px 20px;
+      padding: 58px 20px;
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 43px);
-      line-height: 1.2;
-      margin-bottom: 15px;
+    .hero-inner { max-width: 850px; margin: auto; }
+
+    .eyebrow {
+      color: #91eded;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    .hero p {
-      color: #e0edf7;
-      max-width: 600px;
-      margin: 0 auto 24px;
+    h1 {
+      font-size: clamp(30px, 5vw, 47px);
+      line-height: 1.18;
+      margin: 14px 0;
     }
+
+    .hero p { color: #e0edf5; }
 
     .search-box {
-      max-width: 750px;
-      margin: auto;
-      padding: 14px;
+      max-width: 760px;
+      margin: 25px auto 0;
+      padding: 8px;
+      display: flex;
+      gap: 8px;
       background: white;
       border-radius: 12px;
-      display: grid;
-      grid-template-columns: 2fr 1fr auto;
-      gap: 10px;
+      box-shadow: 0 12px 30px #06192b40;
     }
 
-    input, select {
-      width: 100%;
+    input, select, button { font: inherit; }
+
+    .search-box input,
+    .search-box select {
       min-width: 0;
-      padding: 13px;
-      border: 1px solid #d5deea;
-      border-radius: 7px;
+      padding: 12px;
+      border: 0;
+      outline: none;
       background: white;
-      font-size: 14px;
+      color: var(--text);
     }
 
-    button, .apply {
-      background: #087e8b;
+    .search-box input { flex: 1; }
+
+    button, .apply-btn {
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 17px;
+      background: var(--teal);
       color: white;
-      border: none;
-      border-radius: 7px;
-      padding: 12px 18px;
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
     }
 
+    button:hover, .apply-btn:hover { background: #108989; }
+
     main {
-      max-width: 1100px;
-      margin: 35px auto;
-      padding: 0 18px;
+      max-width: 1120px;
+      margin: auto;
+      padding: 35px 20px 55px;
     }
 
-    .section-title {
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      flex-wrap: wrap;
       margin-bottom: 18px;
     }
 
-    .section-title h2 {
-      font-size: 25px;
-    }
+    h2 { color: var(--navy); margin: 0; font-size: 25px; }
 
-    .section-title p {
-      color: #64748b;
-      font-size: 14px;
-    }
+    .subheading { color: var(--muted); margin: 5px 0 0; font-size: 14px; }
 
     .countries {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-bottom: 38px;
+      margin-bottom: 40px;
     }
 
     .country {
       background: white;
-      padding: 17px 10px;
+      border: 1px solid var(--border);
+      padding: 14px 8px;
       text-align: center;
-      border-radius: 10px;
-      border: 1px solid #e0e7ef;
+      border-radius: 12px;
       cursor: pointer;
+      color: var(--blue);
       font-weight: bold;
     }
 
-    .country:hover {
-      border-color: #087e8b;
-      color: #087e8b;
+    .country:hover, .country.active {
+      border-color: var(--teal);
+      background: #eafafa;
     }
 
-    .jobs {
+    .flag { display: block; font-size: 25px; }
+
+    .jobs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
     }
 
-    .job {
+    .job-card {
       background: white;
-      padding: 22px;
-      border: 1px solid #e0e7ef;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px #12314d08;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 21px;
+      box-shadow: 0 4px 15px #123f6608;
+      overflow-wrap: anywhere;
     }
 
-    .job h3 {
-      margin: 12px 0 5px;
+    .job-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+    }
+
+    .job-card h3 {
+      color: var(--navy);
+      margin: 0 0 5px;
       font-size: 19px;
     }
 
-    .job .hospital {
-      color: #64748b;
-      font-size: 14px;
-    }
+    .hospital { color: var(--muted); font-size: 14px; }
 
     .tag {
       display: inline-block;
-      background: #e0f7f4;
-      color: #087e8b;
-      border-radius: 5px;
-      padding: 4px 8px;
+      background: #e7f8f7;
+      color: #087979;
+      padding: 4px 9px;
+      border-radius: 20px;
       font-size: 12px;
       font-weight: bold;
+      white-space: nowrap;
     }
 
-    .job p {
-      margin: 10px 0;
+    .job-details {
+      margin: 15px 0;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       font-size: 14px;
     }
 
-    .apply {
-      margin-top: 10px;
-      font-size: 13px;
+    .job-details p { margin: 5px 0; }
+
+    .description {
+      color: #50616b;
+      font-size: 14px;
+      white-space: pre-line;
     }
 
+    .job-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .deadline { color: var(--muted); font-size: 12px; }
+
     .notice {
-      margin-top: 24px;
-      color: #64748b;
-      font-size: 13px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+      grid-column: 1 / -1;
+    }
+
+    .error { color: #a32121; }
+
+    .about {
+      background: var(--light);
+      border-radius: 14px;
+      padding: 25px;
+      margin-top: 40px;
     }
 
     footer {
-      margin-top: 50px;
-      padding: 30px 18px;
-      background: #0b3157;
-      color: #d6e7f8;
+      background: var(--navy);
+      color: #d9e5ee;
+      padding: 25px 20px;
       text-align: center;
-    }
-
-    footer p {
       font-size: 13px;
-      margin-top: 7px;
     }
 
-    @media (max-width: 600px) {
-      .nav {
-        align-items: flex-start;
-      }
-
-      .nav a {
-        margin: 0 12px 0 0;
-      }
-
-      .search-box {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 42px 16px;
-      }
+    @media (max-width: 650px) {
+      .search-box { flex-direction: column; }
+      .search-box select { max-width: none; }
+      .countries { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .jobs-grid { grid-template-columns: 1fr; }
+      .hero { padding: 43px 16px; }
+      main { padding: 28px 15px 40px; }
+      .nav { padding: 12px 15px; }
+      .brand { font-size: 18px; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <div class="nav">
-      <div class="logo">HealthJob <span>Global</span></div>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#countries">Countries</a>
-        <a href="#jobs-section">Find Jobs</a>
-      </nav>
-    </div>
+    <nav class="nav">
+      <a class="brand" href="#">HealthJob <span>Global</span></a>
+      <a class="nav-link" href="#jobs">Find Jobs ↓</a>
+    </nav>
   </header>
 
-  <section class="hero" id="home">
-    <h1>Your Healthcare Career<br>Starts Here</h1>
-    <p>
-      Discover nursing and healthcare opportunities
-      in Bangladesh and around the world.
-    </p>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Your Healthcare Career Starts Here</div>
+      <h1>Find Your Next Healthcare Job</h1>
+      <p>
+        Explore nursing and healthcare opportunities in Bangladesh
+        and across the Gulf region.
+      </p>
 
-    <div class="search-box">
-      <input id="search" type="search"
-        placeholder="Search job title or hospital">
+      <form class="search-box" id="searchForm">
+        <input id="searchInput" type="search"
+          placeholder="Job title, hospital or qualification..."
+          aria-label="Search jobs">
 
-      <select id="country-filter">
-        <option value="">All countries</option>
-        <option>Bangladesh</option>
-        <option>UAE</option>
-        <option>Saudi Arabia</option>
-        <option>Qatar</option>
-        <option>Oman</option>
-        <option>Kuwait</option>
-        <option>Bahrain</option>
-      </select>
+        <select id="countryFilter" aria-label="Choose country">
+          <option value="">All countries</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="UAE">UAE</option>
+          <option value="Saudi Arabia">Saudi Arabia</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Oman">Oman</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Bahrain">Bahrain</option>
+        </select>
 
-      <button id="search-btn">Search Jobs</button>
+        <button type="submit">Search Jobs</button>
+      </form>
     </div>
   </section>
 
   <main>
-    <section id="countries">
-      <div class="section-title">
-        <h2>Explore by Country</h2>
-        <p>Find opportunities in your preferred destination.</p>
+    <section>
+      <div class="section-heading">
+        <div>
+          <h2>Explore by Country</h2>
+          <p class="subheading">Choose your preferred job destination.</p>
+        </div>
       </div>
 
-      <div class="countries">
-        <div class="country" data-country="Bangladesh">🇧🇩 Bangladesh</div>
-        <div class="country" data-country="UAE">🇦🇪 UAE</div>
-        <div class="country" data-country="Saudi Arabia">🇸🇦 Saudi Arabia</div>
-        <div class="country" data-country="Qatar">🇶🇦 Qatar</div>
-        <div class="country" data-country="Oman">🇴🇲 Oman</div>
-        <div class="country" data-country="Kuwait">🇰🇼 Kuwait</div>
-        <div class="country" data-country="Bahrain">🇧🇭 Bahrain</div>
+      <div class="countries" id="countryTiles">
+        <button class="country active" data-country="">
+          <span class="flag">🌍</span>All Countries
+        </button>
+        <button class="country" data-country="Bangladesh">
+          <span class="flag">🇧🇩</span>Bangladesh
+        </button>
+        <button class="country" data-country="UAE">
+          <span class="flag">🇦🇪</span>UAE
+        </button>
+        <button class="country" data-country="Saudi Arabia">
+          <span class="flag">🇸🇦</span>Saudi Arabia
+        </button>
+        <button class="country" data-country="Qatar">
+          <span class="flag">🇶🇦</span>Qatar
+        </button>
+        <button class="country" data-country="Oman">
+          <span class="flag">🇴🇲</span>Oman
+        </button>
+        <button class="country" data-country="Kuwait">
+          <span class="flag">🇰🇼</span>Kuwait
+        </button>
+        <button class="country" data-country="Bahrain">
+          <span class="flag">🇧🇭</span>Bahrain
+        </button>
       </div>
     </section>
 
-    <section id="jobs-section">
-      <div class="section-title">
-        <h2>Latest Healthcare Jobs</h2>
-        <p id="job-count">Explore available opportunities</p>
+    <section id="jobs">
+      <div class="section-heading">
+        <div>
+          <h2>Latest Healthcare Jobs</h2>
+          <p class="subheading" id="jobCount">Connecting to job database...</p>
+        </div>
+        <button type="button" id="refreshBtn">Refresh Jobs ↻</button>
       </div>
 
-      <div id="jobs" class="jobs"></div>
+      <div id="jobsList" class="jobs-grid">
+        <div class="notice">Loading jobs from our database...</div>
+      </div>
+    </section>
 
-      <p class="notice">
-        Note: Sample listings are for website testing only.
-        Always verify the employer, vacancy and application deadline
-        before applying.
+    <section class="about">
+      <h2>About HealthJob Global</h2>
+      <p>
+        HealthJob Global helps healthcare professionals discover
+        nursing and healthcare job opportunities in Bangladesh and
+        Gulf countries. Always verify the employer, eligibility,
+        salary and application deadline before applying.
+      </p>
+      <p class="subheading">
+        Employers and recruiters should provide accurate vacancy
+        information and a verifiable application link.
       </p>
     </section>
   </main>
 
   <footer>
-    <div class="logo">HealthJob <span>Global</span></div>
-    <p>Connecting Healthcare Professionals with Global Opportunities.</p>
-    <p>Bangladesh · UAE · Saudi Arabia · Qatar · Gulf Region</p>
-    <p>© 2026 HealthJob Global</p>
+    <strong>HealthJob Global</strong>
+    <p>Connecting Healthcare Professionals with Opportunities.</p>
+    <p>Always verify job circulars with the official employer.</p>
+    <p>© <span id="year"></span> HealthJob Global</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
-    const jobs = [
-      {
-        title: "Staff Nurse",
-        hospital: "Sample Hospital",
-        country: "Bangladesh",
-        type: "Full-time",
-        qualification: "Diploma in Nursing or applicable qualification",
-        salary: "Not announced",
-        url: ""
-      },
-      {
-        title: "Registered Nurse",
-        hospital: "Sample Healthcare Employer",
-        country: "UAE",
-        type: "Full-time",
-        qualification: "Relevant nursing licence as required",
-        salary: "Not announced",
-        url: ""
-      },
-      {
-        title: "ICU Nurse",
-        hospital: "Sample Medical Center",
-        country: "Saudi Arabia",
-        type: "Full-time",
-        qualification: "Critical care experience may be required",
-        salary: "Not announced",
-        url: ""
-      },
-      {
-        title: "Staff Nurse",
-        hospital: "Sample Healthcare Employer",
-        country: "Qatar",
-        type: "Full-time",
-        qualification: "Nursing qualification and local licensing",
-        salary: "Not announced",
-        url: ""
-      }
-    ];
+    // Supabase project settings
+    const SUPABASE_URL =
+      "https://hzotapptnaystuwvkbvx.supabase.co";
 
-    const searchInput = document.getElementById("search");
-    const countryFilter = document.getElementById("country-filter");
-    const jobsContainer = document.getElementById("jobs");
-    const jobCount = document.getElementById("job-count");
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_UhWE93qD1gEx-oWoyRXF8w_w_CrxeUa";
 
-    function renderJobs() {
-      const query = searchInput.value.trim().toLowerCase();
-      const country = countryFilter.value;
+    const db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-      const filtered = jobs.filter(job => {
-        const text = (
-          job.title + " " + job.hospital + " " +
-          job.country + " " + job.qualification
-        ).toLowerCase();
+    const jobsList = document.getElementById("jobsList");
+    const jobCount = document.getElementById("jobCount");
+    const searchInput = document.getElementById("searchInput");
+    const countryFilter = document.getElementById("countryFilter");
 
-        return text.includes(query) &&
-          (!country || job.country === country);
-      });
+    let allJobs = [];
 
-      jobCount.textContent = filtered.length +
-        " sample listing(s) shown";
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-      if (!filtered.length) {
-        jobsContainer.innerHTML =
-          "<p>No matching jobs found. Try another search.</p>";
-        return;
-      }
-
-      jobsContainer.replaceChildren();
-
-      filtered.forEach(job => {
-        const card = document.createElement("article");
-        card.className = "job";
-
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = job.country;
-        card.appendChild(tag);
-
-        const title = document.createElement("h3");
-        title.textContent = job.title;
-        card.appendChild(title);
-
-        const hospital = document.createElement("p");
-        hospital.className = "hospital";
-        hospital.textContent = job.hospital;
-        card.appendChild(hospital);
-
-        [
-          "Employment: " + job.type,
-          "Salary: " + job.salary,
-          "Qualification: " + job.qualification
-        ].forEach(text => {
-          const p = document.createElement("p");
-          p.textContent = text;
-          card.appendChild(p);
-        });
-
-        if (job.url) {
-          const link = document.createElement("a");
-          link.className = "apply";
-          link.href = job.url;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = "Apply Now";
-          card.appendChild(link);
-        } else {
-          const label = document.createElement("p");
-          label.className = "notice";
-          label.textContent = "Demo listing — not a real vacancy";
-          card.appendChild(label);
-        }
-
-        jobsContainer.appendChild(card);
+    // Build HTML safely by escaping database text.
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, function(char) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[char];
       });
     }
 
+    function safeApplyURL(value) {
+      if (!value) return "";
+
+      try {
+        const url = new URL(value);
+        if (url.protocol === "https:" || url.protocol === "http:") {
+          return url.href;
+        }
+      } catch (_) {}
+
+      return "";
+    }
+
+    function formatDeadline(value) {
+      if (!value) return "Not specified";
+
+      const date = new Date(value + "T00:00:00");
+
+      if (Number.isNaN(date.getTime())) return "Not specified";
+
+      return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function renderJobs() {
+      const query = searchInput.value.trim().toLowerCase();
+      const selectedCountry = countryFilter.value;
+
+      const filtered = allJobs.filter(function(job) {
+        const searchable = [
+          job.title,
+          job.hospital_name,
+          job.country,
+          job.job_type,
+          job.salary,
+          job.qualification,
+          job.description
+        ].join(" ").toLowerCase();
+
+        const matchesSearch = searchable.includes(query);
+        const matchesCountry =
+          !selectedCountry || job.country === selectedCountry;
+
+        return matchesSearch && matchesCountry;
+      });
+
+      jobCount.textContent =
+        filtered.length + (filtered.length === 1 ? " job found" : " jobs found");
+
+      if (filtered.length === 0) {
+        jobsList.innerHTML = `
+          <div class="notice">
+            <h3>No jobs found</h3>
+            <p>Try another keyword or select a different country.</p>
+          </div>`;
+        return;
+      }
+
+      jobsList.innerHTML = filtered.map(function(job) {
+        const title = escapeHTML(job.title || "Healthcare Position");
+        const hospital = escapeHTML(job.hospital_name || "Employer not specified");
+        const country = escapeHTML(job.country || "Country not specified");
+        const type = escapeHTML(job.job_type || "Not specified");
+        const salary = escapeHTML(job.salary || "Not specified");
+        const qualification = escapeHTML(job.qualification || "Not specified");
+        const description = escapeHTML(job.description || "Contact the employer for more information.");
+        const deadline = escapeHTML(formatDeadline(job.deadline));
+        const applyURL = safeApplyURL(job.apply_url);
+
+        const applyLink = applyURL
+          ? `<a class="apply-btn" href="${escapeHTML(applyURL)}"
+               target="_blank" rel="noopener noreferrer">Apply Now ↗</a>`
+          : `<span class="deadline">No application link provided</span>`;
+
+        return `
+          <article class="job-card">
+            <div class="job-top">
+              <div>
+                <h3>${title}</h3>
+                <div class="hospital">${hospital}</div>
+              </div>
+              <span class="tag">${country}</span>
+            </div>
+
+            <div class="job-details">
+              <p><strong>Job Type:</strong> ${type}</p>
+              <p><strong>Salary:</strong> ${salary}</p>
+              <p><strong>Qualification:</strong> ${qualification}</p>
+            </div>
+
+            <div class="description">${description}</div>
+
+            <div class="job-footer">
+              <span class="deadline">Deadline: ${deadline}</span>
+              ${applyLink}
+            </div>
+          </article>`;
+      }).join("");
+    }
+
+    async function loadJobs() {
+      jobsList.innerHTML =
+        '<div class="notice">Loading jobs from database...</div>';
+      jobCount.textContent = "Loading...";
+
+      const { data, error } = await db
+        .from("jobs")
+        .select("id,title,hospital_name,country,job_type,salary,qualification,description,apply_url,deadline,created_at")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Supabase error:", error.message);
+        jobCount.textContent = "Could not load jobs";
+
+        jobsList.innerHTML = `
+          <div class="notice error">
+            <h3>Unable to load jobs</h3>
+            <p>Check the Supabase URL, publishable key, table name,
+            and Row Level Security SELECT policy.</p>
+            <button type="button" onclick="loadJobs()">Try Again</button>
+          </div>`;
+        return;
+      }
+
+      allJobs = data || [];
+      renderJobs();
+    }
+
+    document.getElementById("searchForm").addEventListener(
+      "submit",
+      function(event) {
+        event.preventDefault();
+        renderJobs();
+        document.getElementById("jobs").scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    );
+
     searchInput.addEventListener("input", renderJobs);
     countryFilter.addEventListener("change", renderJobs);
-    document.getElementById("search-btn")
-      .addEventListener("click", renderJobs);
 
-    document.querySelectorAll(".country").forEach(button => {
-      button.addEventListener("click", () => {
+    document.getElementById("refreshBtn").addEventListener(
+      "click", loadJobs
+    );
+
+    document.querySelectorAll(".country").forEach(function(button) {
+      button.addEventListener("click", function() {
         countryFilter.value = button.dataset.country;
+        document.querySelectorAll(".country").forEach(function(tile) {
+          tile.classList.toggle("active", tile === button);
+        });
         renderJobs();
-        document.getElementById("jobs-section")
-          .scrollIntoView({ behavior: "smooth" });
+        document.getElementById("jobs").scrollIntoView({
+          behavior: "smooth"
+        });
       });
     });
 
-    renderJobs();
-  </script>
+    countryFilter.addEventListener("change", function() {
+      document.querySelectorAll(".country").forEach(function(tile) {
+        tile.classList.toggle(
+          "active",
+          tile.dataset.country === countryFilter.value
+        );
+      });
+    });
 
+    loadJobs();
+  </script>
 </body>
-  </html>
+</html>
