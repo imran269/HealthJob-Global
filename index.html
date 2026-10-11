@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HealthJob Global – Healthcare Jobs & Career Support for Nurses</title>
-<meta name="description" content="Nursing and healthcare jobs in Bangladesh, UAE, Saudi Arabia and the Gulf, plus CV writing, BDJobs and LinkedIn profile help, exam preparation and job application support.">
+<title>HealthJob Global – Nursing Jobs, Career Services &amp; MCQ Practice</title>
+<meta name="description" content="Discover healthcare jobs, improve your professional profile, prepare for nursing exams, and test your knowledge with MCQ practice – for Bangladesh and international destinations.">
 <meta name="theme-color" content="#0f766e">
-<meta property="og:title" content="HealthJob Global – Healthcare Jobs & Career Support for Nurses">
-<meta property="og:description" content="Nursing and healthcare jobs in Bangladesh and the Gulf, with career support services for nurses.">
+<meta property="og:title" content="HealthJob Global – Your Nursing Career Starts Here">
+<meta property="og:description" content="Healthcare jobs, career services, nursing exam preparation and MCQ practice in one place.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{
-  --brand:#0f766e; --brand-dark:#0b5a54; --mint:#e6f4f2; --accent:#f59e0b;
+  --brand:#0f766e; --brand-dark:#0b5a54; --mint:#e6f4f2; --accent:#f59e0b; --navy:#0f2a43;
   --ink:#13212b; --muted:#4b5b66; --line:#dbe5e9; --bg:#f5f8f9; --card:#fff;
   --danger:#b42318; --danger-bg:#fef3f2; --ok:#067647; --ok-bg:#ecfdf3; --wa:#25d366;
   --r:16px;
@@ -20,6 +20,7 @@
   --shadow-lg:0 14px 34px rgba(19,33,43,.14);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
 svg{display:block;max-width:100%}
@@ -27,6 +28,7 @@ a{color:var(--brand)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
 .skip{position:absolute;left:-999px;top:8px;background:#fff;color:var(--ink);padding:10px 14px;border-radius:8px;z-index:100;font-weight:600}
 .skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 18px}
 .ic{display:inline-flex;flex:0 0 auto;line-height:0}
 section{padding:56px 0}
@@ -35,7 +37,7 @@ section{padding:56px 0}
 h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.01em}
 h2{font-size:clamp(1.55rem,4.5vw,2.1rem)}
 h3{font-size:1.1rem}
-.sub{color:var(--muted);margin:0 0 26px;max-width:640px}
+.sub{color:var(--muted);margin:0 0 26px;max-width:680px}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;border:2px solid transparent;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .12s,background .2s,box-shadow .2s;text-align:center}
@@ -47,50 +49,53 @@ h3{font-size:1.1rem}
 .btn-accent:hover{background:#e08e00}
 .btn-ghost{background:#fff;color:var(--brand-dark);border-color:var(--brand)}
 .btn-ghost:hover{background:var(--mint)}
-.btn-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
 .btn-light:hover{background:rgba(255,255,255,.12)}
 .btn-wa{background:var(--wa);color:#073b1a}
 .btn-wa:hover{background:#1fbb59}
-.btn[disabled]{opacity:.65;cursor:not-allowed}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
 
 /* header */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);-webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.12rem}
 .logo b{color:var(--brand)}
-.links{display:none;align-items:center;gap:6px}
-.links a.nl{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600}
-.links a.nl:hover{background:var(--mint);color:var(--brand-dark)}
+.links{display:none;align-items:center;gap:2px}
+.links a.nl{padding:8px 11px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem}
+.links a.nl:hover,.links a.nl[aria-current="true"]{background:var(--mint);color:var(--brand-dark)}
+.links .btn{margin-left:8px}
 .m-actions{display:flex;gap:8px}
 .icon-btn{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);text-decoration:none}
 .icon-btn.wa{background:var(--wa);border-color:var(--wa);color:#073b1a}
 .mobile-menu{display:none;border-top:1px solid var(--line);background:#fff}
 .mobile-menu.open{display:block}
 .mobile-menu a{display:block;padding:15px 18px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);font-weight:600}
-@media(min-width:820px){.links{display:flex}.m-actions{display:none}.mobile-menu{display:none!important}}
+.mobile-menu a[aria-current="true"]{color:var(--brand-dark);background:var(--mint)}
+@media(min-width:1000px){.links{display:flex}.m-actions{display:none}.mobile-menu{display:none!important}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;color:#fff;padding:54px 0 58px;
   background:
-    radial-gradient(800px 380px at 90% -10%,rgba(245,158,11,.22),transparent 60%),
+    radial-gradient(800px 380px at 92% -10%,rgba(245,158,11,.20),transparent 60%),
     radial-gradient(600px 360px at 0% 110%,rgba(255,255,255,.10),transparent 60%),
-    linear-gradient(135deg,#0f766e 0%,#0b5a54 70%,#09484a 100%)}
+    linear-gradient(135deg,#0f766e 0%,#0b5a54 55%,#0f2a43 100%)}
 .hero:after{content:"";position:absolute;right:-70px;top:30px;width:280px;height:280px;opacity:.07;pointer-events:none;
   background:linear-gradient(#fff,#fff) center/110px 100% no-repeat,linear-gradient(#fff,#fff) center/100% 110px no-repeat}
 .hero-grid{position:relative;z-index:1;display:grid;gap:30px;grid-template-columns:1fr}
 @media(min-width:920px){.hero-grid{grid-template-columns:1.25fr .75fr;align-items:center;gap:44px}}
 .hero-tag{display:inline-block;background:rgba(255,255,255,.14);padding:6px 14px;border-radius:99px;font-size:.85rem;font-weight:600;margin-bottom:16px}
-.hero h1{font-size:clamp(2rem,6.5vw,3.1rem);margin-bottom:.4em}
-.hero .lead{font-size:1.07rem;max-width:620px;margin:0;color:rgba(255,255,255,.93)}
+.hero h1{font-size:clamp(2rem,6.5vw,3.2rem);margin-bottom:.4em}
+.hero .lead{font-size:1.07rem;max-width:640px;margin:0;color:rgba(255,255,255,.94)}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .dest{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-wrap:wrap;gap:8px}
 .dest li{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);padding:6px 13px;border-radius:99px;font-size:.9rem;font-weight:600}
-.hero-panel{display:none;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:24px}
-@media(min-width:920px){.hero-panel{display:block}}
-.panel-title{font-weight:800;font-size:1.1rem;margin:0 0 14px}
-.hero-panel ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.hero-panel li{display:flex;gap:10px;align-items:flex-start;font-size:.97rem}
-.hero-panel li .ic{background:var(--accent);color:#2b1d00;border-radius:50%;width:22px;height:22px;align-items:center;justify-content:center;margin-top:1px}
+.hero-panel{display:none;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:20px}
+@media(min-width:920px){.hero-panel{display:grid;gap:10px}}
+.panel-title{font-weight:800;font-size:1.1rem;margin:0 0 4px}
+.panel-link{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:12px;color:#fff;text-decoration:none;background:rgba(255,255,255,.08)}
+.panel-link:hover{background:rgba(255,255,255,.17)}
+.panel-link small{display:block;opacity:.85}
+.panel-link .svc-ic{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.16);color:#fff}
 
 /* filters */
 .filters{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}
@@ -102,7 +107,7 @@ h3{font-size:1.1rem}
 /* cards */
 .grid{display:grid;gap:16px;grid-template-columns:1fr}
 @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1060px){.grid.jobs{grid-template-columns:repeat(3,1fr)}.grid.svc{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1060px){.grid.jobs,.grid.prep{grid-template-columns:repeat(3,1fr)}.grid.svc{grid-template-columns:repeat(4,1fr)}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .2s}
 @media(hover:hover){.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}}
 .card h3{margin:0}
@@ -110,7 +115,10 @@ h3{font-size:1.1rem}
 .badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:99px;font-size:.78rem;font-weight:700;background:var(--mint);color:var(--brand-dark)}
 .badge.type{background:#fff2d6;color:#7a4a00}
 .badge.exp{background:#eceff1;color:#4b5b66}
-.hospital{display:flex;gap:8px;align-items:center;font-weight:600;color:var(--ink)}
+.badge.good{background:#dcfae6;color:#067647}
+.badge.bad{background:#fee4e2;color:#b42318}
+.badge.navy{background:#e4ebf3;color:var(--navy)}
+.hospital{display:flex;gap:8px;align-items:center;font-weight:600}
 .hospital .ic{color:var(--brand)}
 .info{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.93rem}
 .info .ic{color:var(--brand);margin-top:3px}
@@ -119,15 +127,25 @@ h3{font-size:1.1rem}
 details summary{cursor:pointer;color:var(--brand-dark);font-weight:700;font-size:.93rem;padding:4px 0}
 details p{white-space:pre-line;margin:8px 0 0;font-size:.93rem;color:var(--muted)}
 .actions{margin-top:auto;padding-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-.svc-ic{width:50px;height:50px;border-radius:14px;background:var(--mint);color:var(--brand);display:grid;place-items:center}
+.svc-ic{width:50px;height:50px;border-radius:14px;background:var(--mint);color:var(--brand);display:grid;place-items:center;flex:0 0 auto}
 .svc p{margin:0;color:var(--muted);font-size:.94rem}
 .svc .actions{flex-direction:column}
 .svc .actions .btn{width:100%}
+.prep-card .actions .btn{flex:1 1 auto}
+.letter{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800}
+.prep-head{display:flex;align-items:center;gap:10px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.ticks li{display:flex;gap:8px;align-items:flex-start;font-size:.94rem;color:var(--ink)}
+.ticks .ic{color:var(--brand);margin-top:3px}
+.note{font-size:.82rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:0}
+.cat-title{display:flex;align-items:center;gap:10px;margin:0 0 6px}
+.divider-note{display:flex;gap:12px;align-items:flex-start;background:#fff7e6;border:1px solid #f8d99a;color:#5c3b00;border-radius:12px;padding:12px 14px;margin:0 0 22px;font-size:.93rem}
+.divider-note p{margin:0}
 
 /* states */
 .state{text-align:center;padding:38px 20px;border:1.5px dashed var(--line);border-radius:var(--r);background:#fff;color:var(--muted);display:grid;justify-items:center;gap:12px}
 .state .big{width:56px;height:56px;border-radius:50%;background:var(--mint);color:var(--brand);display:grid;place-items:center}
-.state p{margin:0;max-width:440px}
+.state p{margin:0;max-width:460px}
 .state.error{border-color:#f4b8b2;background:var(--danger-bg);color:var(--danger)}
 .state.error .big{background:#fee4e2;color:var(--danger)}
 .skel-card{gap:12px}
@@ -146,6 +164,15 @@ details p{white-space:pre-line;margin:8px 0 0;font-size:.93rem;color:var(--muted
 .step .svc-ic{margin-bottom:12px}
 .step p{margin:0;color:var(--muted);font-size:.95rem}
 
+/* alerts */
+.alert{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;margin-bottom:16px;font-size:.96rem}
+.alert p{margin:0 0 4px}
+.alert p:last-child{margin:0}
+.alert.ok{background:var(--ok-bg);color:var(--ok);border:1px solid #abefc6}
+.alert.bad{background:var(--danger-bg);color:var(--danger);border:1px solid #f4b8b2}
+.alert.warn{background:#fff7e6;color:#5c3b00;border:1px solid #f8d99a}
+.alert a{display:inline-block;margin-top:6px;font-weight:700;color:inherit}
+
 /* form */
 .form-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 20px;max-width:720px;margin:0 auto;box-shadow:var(--shadow-lg)}
 @media(min-width:640px){.form-card{padding:32px}}
@@ -155,34 +182,100 @@ details p{white-space:pre-line;margin:8px 0 0;font-size:.93rem;color:var(--muted
 label{display:block;font-weight:700;margin-bottom:6px;font-size:.95rem}
 label .req{color:var(--danger)}
 label small{font-weight:400;color:var(--muted)}
-input,select,textarea{width:100%;min-height:50px;padding:11px 14px;border:1.5px solid #c5d3d9;border-radius:12px;font:inherit;font-size:1rem;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;min-height:50px;padding:11px 14px;border:1.5px solid #c5d3d9;border-radius:12px;font:inherit;font-size:1rem;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
 textarea{min-height:120px;resize:vertical}
 input:hover,select:hover,textarea:hover{border-color:#8fa6b0}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(15,118,110,.18)}
+input[type=text]:focus,input[type=tel]:focus,input[type=email]:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(15,118,110,.18)}
 .invalid{border-color:var(--danger)!important;background:#fffafa}
-.hint{font-size:.82rem;color:var(--muted);margin-top:4px}
 .err{color:var(--danger);font-size:.86rem;font-weight:600;margin-top:5px;min-height:1.2em}
 .counter{text-align:right;font-size:.8rem;color:var(--muted)}
 .flash{animation:flash 1.2s ease}
 @keyframes flash{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 5px rgba(245,158,11,.5)}}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.alert{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;margin-bottom:18px;font-size:.96rem}
-.alert p{margin:0}
-.alert.ok{background:var(--ok-bg);color:var(--ok);border:1px solid #abefc6}
-.alert.bad{background:var(--danger-bg);color:var(--danger);border:1px solid #f4b8b2}
-.alert a{display:inline-block;margin-top:6px;font-weight:700;color:inherit}
-.hidden{display:none!important}
 .alt-contact{text-align:center;margin:16px 0 0;color:var(--muted);font-size:.94rem}
 
+/* MCQ center */
+.quiz-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-lg);padding:20px;scroll-margin-top:76px}
+@media(min-width:700px){.quiz-card{padding:30px}}
+.step-label{display:flex;align-items:center;gap:10px;font-weight:800;margin:24px 0 10px}
+.step-label:first-child{margin-top:6px}
+.stepn{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:.85rem}
+.cat-grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+.cat-btn{display:flex;gap:12px;align-items:center;text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:inherit;cursor:pointer;color:var(--ink);min-height:68px}
+.cat-btn:hover{border-color:var(--brand)}
+.cat-btn[aria-pressed="true"]{border-color:var(--brand);background:var(--mint);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+.cat-btn[disabled]{opacity:.55;cursor:not-allowed}
+.cat-btn b{display:block}
+.cat-btn small{color:var(--muted)}
+.cat-btn .svc-ic{width:42px;height:42px;border-radius:12px;background:#fff}
+.opt-list,.mode-grid{display:grid;gap:10px}
+@media(min-width:640px){.mode-grid{grid-template-columns:1fr 1fr}}
+.pick{position:relative;display:block;margin:0;font-weight:400;cursor:pointer}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick .box{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;transition:border-color .15s,background .15s}
+.pick:hover .box{border-color:#8fa6b0}
+.pick input:checked + .box{border-color:var(--brand);background:var(--mint);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+.pick input:focus-visible + .box{outline:3px solid var(--accent);outline-offset:2px}
+.pick .box b{display:block}
+.pick .box small{display:block;color:var(--muted)}
+.pick .dot{width:20px;height:20px;border-radius:50%;border:2px solid #98aab3;flex:0 0 auto;margin-top:2px;display:grid;place-items:center}
+.pick input:checked + .box .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 0 45%,#fff 50%)}
+.start-row{margin-top:24px}
+.q-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.q-title{font-weight:800;margin:0 0 6px;font-size:1.05rem}
+.timer{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border-radius:12px;padding:8px 14px;font-weight:800;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.timer.low{background:var(--danger)}
+.progress-meta{display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted);margin-bottom:6px;font-weight:600}
+.progress{height:10px;background:#e3ebee;border-radius:99px;overflow:hidden}
+.progress div{height:100%;background:var(--brand);border-radius:99px;transition:width .25s}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
+.qn{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font:inherit;font-weight:700;cursor:pointer;color:var(--ink)}
+.qn.done{background:var(--mint);border-color:var(--brand);color:var(--brand-dark)}
+.qn.cur{background:var(--brand);border-color:var(--brand);color:#fff}
+fieldset.qfield{border:0;margin:0;padding:0;min-width:0}
+.qtext{padding:0;margin:0 0 16px;font-size:1.15rem;font-weight:700;line-height:1.45}
+.qtext:focus{outline:none}
+.choices{display:grid;gap:10px;margin-bottom:16px}
+.opt .box{align-items:center}
+.opt .key{width:32px;height:32px;border-radius:50%;background:#eef3f5;display:grid;place-items:center;font-weight:800;flex:0 0 auto;color:var(--navy)}
+.opt input:checked + .box .key{background:var(--brand);color:#fff}
+.opt.correct .box{border-color:var(--ok);background:var(--ok-bg)}
+.opt.correct .key{background:var(--ok)!important;color:#fff!important}
+.opt.wrong .box{border-color:var(--danger);background:var(--danger-bg)}
+.opt.wrong .key{background:var(--danger)!important;color:#fff!important}
+.q-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.q-actions .btn{flex:1 1 140px}
+.result-top{display:grid;gap:20px;align-items:center;margin:16px 0;justify-items:center}
+@media(min-width:640px){.result-top{grid-template-columns:auto 1fr;justify-items:start}}
+.ring{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--brand) calc(var(--p,0)*1%),#e3ebee 0);display:grid;place-items:center}
+.ring-in{width:116px;height:116px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center;text-align:center}
+.ring-in b{font-size:1.9rem;line-height:1.1}
+.ring-in span{color:var(--muted);font-size:.9rem;font-weight:600}
+.stats{display:grid;gap:10px;grid-template-columns:repeat(3,1fr);width:100%}
+.stat{border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;background:var(--bg)}
+.stat b{display:block;font-size:1.5rem}
+.stat span{font-size:.82rem;color:var(--muted);font-weight:600}
+.review-list{display:grid;gap:12px;margin-top:12px}
+.review{border:1px solid var(--line);border-left-width:5px;border-radius:14px;padding:14px 16px;background:#fff}
+.review.correct{border-left-color:var(--ok)}
+.review.wrong{border-left-color:var(--danger)}
+.review.skipped{border-left-color:#9aa8b0}
+.review p{margin:6px 0}
+.rq{font-weight:700}
+.rexp{background:var(--bg);border-radius:10px;padding:10px 12px;font-size:.93rem}
+
 /* footer */
-footer{background:#0c2a2e;color:#cfe3e1;padding:44px 0 100px;font-size:.95rem}
+footer{background:var(--navy);color:#cfdbe6;padding:44px 0 100px;font-size:.95rem}
 footer h3{color:#fff;font-size:1rem}
 footer a{color:#9fe0d6}
 footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .foot-grid{display:grid;gap:28px}
-@media(min-width:760px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
+@media(min-width:760px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 .foot-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:10px}
-.disclaimer{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:18px;opacity:.78;font-size:.88rem}
+.disclaimer{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:18px;opacity:.85;font-size:.88rem}
+.disclaimer p{margin:0 0 8px}
 
 /* floating whatsapp */
 .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:54px;height:54px;border-radius:50%;background:var(--wa);color:#073b1a;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.28);transition:opacity .2s,transform .2s,visibility .2s}
@@ -204,9 +297,11 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
       <span>HealthJob <b>Global</b></span>
     </a>
     <nav class="links" aria-label="Main navigation">
+      <a class="nl" href="#home">Home</a>
       <a class="nl" href="#jobs">Jobs</a>
-      <a class="nl" href="#services">Services</a>
-      <a class="nl" href="#order">Order</a>
+      <a class="nl" href="#services">Career Services</a>
+      <a class="nl" href="#prep">Exam Preparation</a>
+      <a class="nl" href="#mcq">MCQ Tests</a>
       <a class="nl" href="#contact">Contact</a>
       <a class="btn btn-wa sm js-wa" href="#" target="_blank" rel="noopener noreferrer"><span class="ic" data-icon="whatsapp" data-size="18"></span>WhatsApp</a>
     </nav>
@@ -216,28 +311,31 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
     <a href="#jobs">Jobs</a>
-    <a href="#services">Services</a>
-    <a href="#order">Order</a>
+    <a href="#services">Career Services</a>
+    <a href="#prep">Exam Preparation</a>
+    <a href="#mcq">MCQ Tests</a>
     <a href="#contact">Contact</a>
   </div>
 </header>
 
 <noscript>
-  <div class="wrap" style="padding:20px 18px"><p><b>JavaScript is required</b> to view jobs and place orders. You can still reach us on <a href="https://wa.me/8801941487025">WhatsApp</a>.</p></div>
+  <div class="wrap" style="padding:20px 18px"><p><b>JavaScript is required</b> to view jobs, take MCQ tests and place orders. You can still reach us on <a href="https://wa.me/8801941487025">WhatsApp</a>.</p></div>
 </noscript>
 
 <main id="main">
+
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="wrap hero-grid">
       <div>
-        <span class="hero-tag">Nursing &amp; healthcare careers</span>
-        <h1>Healthcare Jobs &amp; Career Support for Nurses</h1>
-        <p class="lead">Find nursing and healthcare jobs in Bangladesh, UAE, Saudi Arabia and across the Gulf. Get practical help with your CV, online profiles, applications and exam preparation.</p>
+        <span class="hero-tag">Jobs · Career services · Exam preparation</span>
+        <h1>Your Nursing Career Starts Here</h1>
+        <p class="lead">Discover healthcare jobs, improve your professional profile, prepare for nursing exams, and test your knowledge — all in one place.</p>
         <div class="cta">
-          <a class="btn btn-accent" href="#jobs">Browse Jobs <span class="ic" data-icon="arrowRight" data-size="18"></span></a>
-          <a class="btn btn-light" href="#services">Explore Services</a>
+          <a class="btn btn-accent" href="#jobs">Explore Jobs <span class="ic" data-icon="arrowRight" data-size="18"></span></a>
+          <a class="btn btn-light" href="#mcq">Start MCQ Practice</a>
         </div>
         <ul class="dest" aria-label="Destinations we cover">
           <li><span class="ic" data-icon="pin" data-size="14"></span>Bangladesh</li>
@@ -250,15 +348,12 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
           <li><span class="ic" data-icon="globe" data-size="14"></span>Other destinations</li>
         </ul>
       </div>
-      <aside class="hero-panel" aria-label="How we can help">
-        <p class="panel-title">What we help with</p>
-        <ul>
-          <li><span class="ic" data-icon="check" data-size="14"></span>CV, BDJobs and LinkedIn profiles</li>
-          <li><span class="ic" data-icon="check" data-size="14"></span>Job application assistance</li>
-          <li><span class="ic" data-icon="check" data-size="14"></span>Government and private hospital exam preparation</li>
-          <li><span class="ic" data-icon="check" data-size="14"></span>Nursing study PDFs and practice tests</li>
-          <li><span class="ic" data-icon="check" data-size="14"></span>International healthcare job information</li>
-        </ul>
+      <aside class="hero-panel" aria-label="Explore the platform">
+        <p class="panel-title">Everything in one place</p>
+        <a class="panel-link" href="#jobs"><span class="svc-ic"><span class="ic" data-icon="briefcase" data-size="20"></span></span><span><b>Healthcare Jobs</b><small>Browse the latest listings</small></span></a>
+        <a class="panel-link" href="#services"><span class="svc-ic"><span class="ic" data-icon="fileText" data-size="20"></span></span><span><b>Career Services</b><small>CV, LinkedIn, BDJobs, applications</small></span></a>
+        <a class="panel-link" href="#prep"><span class="svc-ic"><span class="ic" data-icon="bookOpen" data-size="20"></span></span><span><b>Exam Preparation</b><small>Six nursing learning tracks</small></span></a>
+        <a class="panel-link" href="#mcq"><span class="svc-ic"><span class="ic" data-icon="clipboard" data-size="20"></span></span><span><b>MCQ Test Center</b><small>Practice and timed mock tests</small></span></a>
       </aside>
     </div>
   </section>
@@ -276,13 +371,128 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- CAREER SERVICES -->
   <section id="services">
     <div class="wrap">
-      <span class="eyebrow">Career support</span>
-      <h2>Our Services</h2>
-      <p class="sub">Practical help from your first CV to interview day.</p>
+      <span class="eyebrow">Career Services</span>
+      <h2>Career Services</h2>
+      <p class="sub">Professional help to present your qualifications clearly and apply with confidence.</p>
       <div class="grid svc" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- EXAM PREPARATION -->
+  <section id="prep" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Learn &amp; prepare</span>
+      <h2>Nursing Learning &amp; Exam Preparation</h2>
+      <p class="sub">Six learning tracks to organise your preparation. These tracks are being built step by step: you can try the demo MCQ practice now, or ask us what material is currently available.</p>
+      <div class="divider-note">
+        <span class="ic" data-icon="info" data-size="20"></span>
+        <p><b>Educational use only.</b> Practice material here is independent and educational. It is not official, and we do not claim affiliation with or endorsement by any exam body, licensing authority or government agency.</p>
+      </div>
+      <div class="grid prep" id="prepGrid"></div>
+    </div>
+  </section>
+
+  <!-- MCQ TEST CENTER -->
+  <section id="mcq">
+    <div class="wrap">
+      <span class="eyebrow">Practice online</span>
+      <h2>MCQ Test Center</h2>
+      <p class="sub">Choose a category, pick a subject and start a practice or timed mock test right in your browser.</p>
+      <div class="divider-note">
+        <span class="ic" data-icon="info" data-size="20"></span>
+        <p><b>Demo module.</b> The questions currently available are a small set of clearly labelled <b>sample questions</b> written to demonstrate how the test works. They are not official, previous or verified exam questions. Full question sets will be added only when verified material is ready.</p>
+      </div>
+
+      <div class="quiz-card" id="quizCard">
+
+        <!-- SETUP VIEW -->
+        <div id="quizSetup">
+          <h3 id="setupHeading" tabindex="-1">Set up your test</h3>
+          <div id="quizEmpty" class="state" hidden>
+            <div class="big"><span class="ic" data-icon="search" data-size="26"></span></div>
+            <p>No question sets are available yet. Please check back soon, or ask us on WhatsApp.</p>
+            <a class="btn btn-wa sm js-wa" href="#" target="_blank" rel="noopener noreferrer"><span class="ic" data-icon="whatsapp" data-size="16"></span>Ask on WhatsApp</a>
+          </div>
+          <div id="quizSetupBody">
+            <p class="step-label"><span class="stepn">1</span>Choose an exam category</p>
+            <div class="cat-grid" id="quizCats"></div>
+            <p class="step-label"><span class="stepn">2</span>Choose a subject</p>
+            <div class="opt-list" id="quizSets" role="radiogroup" aria-label="Subject"></div>
+            <p class="step-label"><span class="stepn">3</span>Choose a mode</p>
+            <div class="mode-grid">
+              <label class="pick"><input type="radio" name="quizMode" value="practice" checked><span class="box"><span class="dot"></span><span><b>Practice Mode</b><small>No timer. Use "Check answer" as you go and review everything at the end.</small></span></span></label>
+              <label class="pick"><input type="radio" name="quizMode" value="timed"><span class="box"><span class="dot"></span><span><b>Timed Mock Test</b><small id="timedInfo">Countdown timer. Submits automatically at zero.</small></span></span></label>
+            </div>
+            <div class="start-row"><button class="btn btn-primary" id="quizStart" type="button"><span class="ic" data-icon="play" data-size="18"></span>Start Test</button></div>
+          </div>
+        </div>
+
+        <!-- RUN VIEW -->
+        <div id="quizRun" hidden>
+          <div class="q-top">
+            <div>
+              <p class="q-title" id="quizTitle"></p>
+              <span class="badge navy" id="quizModeBadge"></span>
+              <span class="badge type" id="quizDemoBadge">Demo / sample questions</span>
+            </div>
+            <div class="timer" id="timerBox" role="timer" aria-live="off" hidden><span class="ic" data-icon="clock" data-size="20"></span><span id="quizTimer">00:00</span></div>
+          </div>
+          <div class="progress-meta"><span id="qProgressText"></span><span id="qAnswered"></span></div>
+          <div class="progress" id="qProgress" role="progressbar" aria-label="Test progress" aria-valuemin="1" aria-valuenow="1" aria-valuemax="1"><div id="qProgressBar"></div></div>
+          <div class="qnav" id="qNav" role="group" aria-label="Question navigator"></div>
+          <fieldset class="qfield">
+            <legend class="qtext" id="qText" tabindex="-1"></legend>
+            <div class="choices" id="qChoices"></div>
+          </fieldset>
+          <div class="alert" id="qFeedback" hidden aria-live="polite"></div>
+          <div class="alert warn" id="submitConfirm" hidden>
+            <span class="ic" data-icon="alert" data-size="22"></span>
+            <div>
+              <p id="submitMsg"></p>
+              <div class="q-actions">
+                <button class="btn btn-accent sm" id="btnConfirmYes" type="button">Submit now</button>
+                <button class="btn btn-ghost sm" id="btnConfirmNo" type="button">Keep working</button>
+              </div>
+            </div>
+          </div>
+          <div class="q-actions">
+            <button class="btn btn-ghost sm" id="btnPrev" type="button">← Previous</button>
+            <button class="btn btn-ghost sm" id="btnCheck" type="button">Check answer</button>
+            <button class="btn btn-primary sm" id="btnNext" type="button">Next →</button>
+            <button class="btn btn-accent sm" id="btnSubmit" type="button">Submit Test</button>
+          </div>
+          <div class="sr" id="quizLive" aria-live="polite"></div>
+        </div>
+
+        <!-- RESULT VIEW -->
+        <div id="quizResult" hidden>
+          <h3 id="resultHeading" tabindex="-1">Test results</h3>
+          <p class="sub" id="resultSub" style="margin-bottom:8px"></p>
+          <div class="result-top">
+            <div class="ring" id="scoreRing"><div class="ring-in"><b id="scorePct"></b><span id="scoreText"></span></div></div>
+            <div class="stats">
+              <div class="stat"><b id="statCorrect">0</b><span>Correct</span></div>
+              <div class="stat"><b id="statWrong">0</b><span>Incorrect</span></div>
+              <div class="stat"><b id="statSkipped">0</b><span>Not answered</span></div>
+            </div>
+          </div>
+          <div class="alert warn" id="resultNote" hidden aria-live="polite"></div>
+          <div class="q-actions">
+            <button class="btn btn-primary sm js-retry" type="button"><span class="ic" data-icon="refresh" data-size="16"></span>Retry Test</button>
+            <button class="btn btn-ghost sm js-back" type="button">Back to Categories</button>
+          </div>
+          <h3 style="margin-top:28px">Review your answers</h3>
+          <div class="review-list" id="reviewList"></div>
+          <div class="q-actions" style="margin-top:20px">
+            <button class="btn btn-primary sm js-retry" type="button"><span class="ic" data-icon="refresh" data-size="16"></span>Retry Test</button>
+            <button class="btn btn-ghost sm js-back" type="button">Back to Categories</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -291,11 +501,11 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     <div class="wrap">
       <span class="eyebrow">Simple process</span>
       <h2>How It Works</h2>
-      <p class="sub">Three easy steps from request to results.</p>
+      <p class="sub">Three easy steps, whether you want a job, a stronger profile or exam practice.</p>
       <div class="steps">
-        <div class="step"><span class="num" aria-hidden="true">1</span><div class="svc-ic"><span class="ic" data-icon="clipboard" data-size="24"></span></div><h3>Choose a service</h3><p>Pick the service you need and fill in the short order form.</p></div>
-        <div class="step"><span class="num" aria-hidden="true">2</span><div class="svc-ic"><span class="ic" data-icon="phone" data-size="24"></span></div><h3>We contact you</h3><p>We reach out by phone or WhatsApp to confirm your details and needs.</p></div>
-        <div class="step"><span class="num" aria-hidden="true">3</span><div class="svc-ic"><span class="ic" data-icon="checkCircle" data-size="24"></span></div><h3>Get your support</h3><p>Receive your documents, guidance or study material and move forward with confidence.</p></div>
+        <div class="step"><span class="num" aria-hidden="true">1</span><div class="svc-ic"><span class="ic" data-icon="search" data-size="24"></span></div><h3>Explore</h3><p>Browse healthcare jobs, career services and nursing learning tracks.</p></div>
+        <div class="step"><span class="num" aria-hidden="true">2</span><div class="svc-ic"><span class="ic" data-icon="clipboard" data-size="24"></span></div><h3>Practice or order</h3><p>Take an MCQ practice test, or send a service request using the order form.</p></div>
+        <div class="step"><span class="num" aria-hidden="true">3</span><div class="svc-ic"><span class="ic" data-icon="checkCircle" data-size="24"></span></div><h3>Move forward</h3><p>We contact you about your request, and you apply to jobs with a stronger profile.</p></div>
       </div>
     </div>
   </section>
@@ -309,7 +519,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
         <p class="sub" style="margin-left:auto;margin-right:auto">Fill in the form and we will contact you. Prefer chat? Use WhatsApp.</p>
       </div>
       <div class="form-card">
-        <div id="formAlert" class="hidden" role="alert" aria-live="polite"></div>
+        <div id="formAlert" class="hidden" role="alert" aria-live="polite" hidden></div>
         <form id="orderForm" novalidate>
           <div class="form-grid two">
             <div class="field">
@@ -369,25 +579,36 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
           <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#0f766e"/></svg>
           HealthJob Global
         </div>
-        <p>Healthcare jobs and career support for nurses in Bangladesh, UAE, Saudi Arabia and the Gulf.</p>
+        <p>Nursing jobs, career services, exam preparation and MCQ practice for Bangladesh and international destinations.</p>
       </div>
       <div>
-        <h3>Quick links</h3>
+        <h3>Explore</h3>
         <ul>
+          <li><a href="#home">Home</a></li>
           <li><a href="#jobs">Jobs</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#how">How it works</a></li>
+          <li><a href="#mcq">MCQ Tests</a></li>
           <li><a href="#order">Order a service</a></li>
         </ul>
       </div>
       <div>
+        <h3>Programs</h3>
+        <ul>
+          <li><a href="#services">Career Services</a></li>
+          <li><a href="#prep">Exam Preparation</a></li>
+          <li><a href="#how">How it works</a></li>
+        </ul>
+      </div>
+      <div>
         <h3>Contact</h3>
-        <p style="margin-top:0">Questions about a job or service? Message us directly.</p>
-        <a class="btn btn-wa sm js-wa" href="#" target="_blank" rel="noopener noreferrer" style="color:#073b1a"><span class="ic" data-icon="whatsapp" data-size="18"></span>WhatsApp us</a>
+        <p style="margin-top:0">Questions about a job, service or exam track? Message us directly.</p>
+        <a class="btn btn-wa sm js-wa" href="#" target="_blank" rel="noopener noreferrer"><span class="ic" data-icon="whatsapp" data-size="18"></span>WhatsApp us</a>
       </div>
     </div>
-    <p class="disclaimer">We provide job information and career support. We do not guarantee employment. Always verify employers and never pay for a job offer without checking its authenticity.</p>
-    <p style="opacity:.7;margin:6px 0 0">© <span id="year"></span> HealthJob Global</p>
+    <div class="disclaimer">
+      <p><b>Job information:</b> Job listings must be independently verified before you apply. We provide information and career support and do not guarantee employment. Never pay for a job offer without checking its authenticity.</p>
+      <p><b>Practice tests:</b> MCQ tests and study content are educational and do not guarantee exam success or licensing eligibility. We are not affiliated with or endorsed by any exam body, licensing authority or government agency.</p>
+      <p style="opacity:.8;margin:0">© <span id="year"></span> HealthJob Global</p>
+    </div>
   </div>
 </footer>
 
@@ -414,16 +635,152 @@ const CONFIG = {
 
 const COUNTRIES = ["Bangladesh","UAE","Saudi Arabia","Qatar","Kuwait","Oman","Bahrain","Other"];
 
-const SERVICES = [
+/* ---------- Career Services (one category, 4 cards) ---------- */
+const CAREER_SERVICES = [
   {icon:"fileText",  name:"CV and Resume Writing", desc:"A clean, professional nursing CV tailored for Bangladesh and Gulf employers."},
-  {icon:"briefcase", name:"BDJobs Profile Setup and Optimization", desc:"We build and improve your BDJobs profile so recruiters can find you and your applications look strong."},
-  {icon:"linkedin",  name:"LinkedIn Profile Optimization", desc:"A professional LinkedIn profile with a clear headline, summary and skills for international healthcare recruiters."},
-  {icon:"send",      name:"Job Application Assistance", desc:"Help with cover letters, forms and applying to the right openings."},
-  {icon:"landmark",  name:"Government Nursing Recruitment Exam Preparation", desc:"Focused preparation for government nursing recruitment exams."},
-  {icon:"hospital",  name:"Private Hospital Written Exam, Interview and Viva Preparation", desc:"Practice for written tests, interviews and viva at private hospitals."},
-  {icon:"bookOpen",  name:"Nursing Study PDFs and Practice Tests", desc:"Study material and practice questions to help you revise faster."},
-  {icon:"globe",     name:"International Healthcare Job Information", desc:"Guidance on requirements and opportunities in the Gulf and beyond."}
+  {icon:"linkedin",  name:"LinkedIn Profile Optimization", desc:"A clear headline, summary and skills section to attract international healthcare recruiters."},
+  {icon:"briefcase", name:"BDJobs Profile Setup and Optimization", desc:"We build and improve your BDJobs profile so your applications look strong."},
+  {icon:"send",      name:"Job Application Assistance", desc:"Help with cover letters, application forms and choosing the right openings."}
 ];
+
+/* Services that already existed on the order form. They stay selectable so existing
+   order values do not change; exam-preparation cards link to them. */
+const OTHER_SERVICES = [
+  "Government Nursing Recruitment Exam Preparation",
+  "Private Hospital Written Exam, Interview and Viva Preparation",
+  "Nursing Study PDFs and Practice Tests",
+  "International Healthcare Job Information"
+];
+
+/* ---------- Exam preparation tracks (separate category) ---------- */
+const PREP_TRACKS = [
+  {letter:"A", icon:"bookOpen", title:"Nursing Study Materials",
+   points:["Nursing subject notes","PDFs and revision materials","Topic-wise practice questions"],
+   quizCat:"study", service:"Nursing Study PDFs and Practice Tests", serviceLabel:"Request study materials",
+   note:"Study material is shared on request. Ask us what is currently available."},
+  {letter:"B", icon:"clipboard", title:"NCLEX-RN Preparation",
+   points:["Topic-wise question practice","Timed mock tests","Rationales and explanations for answers"],
+   quizCat:"nclex",
+   note:"NCLEX-RN is a registered trademark of the National Council of State Boards of Nursing (NCSBN). HealthJob Global is not affiliated with or endorsed by NCSBN."},
+  {letter:"C", icon:"graduation", title:"Prometric Exam Preparation",
+   points:["Separate practice tracks for relevant destination-country exams","Topic-wise questions","Timed practice and mock tests"],
+   quizCat:"prometric",
+   note:"Not affiliated with or endorsed by Prometric or any licensing authority. Always check the official exam body for current rules."},
+  {letter:"D", icon:"landmark", title:"Government Nursing Recruitment Preparation",
+   points:["Bangladesh government nursing recruitment","Topic-wise MCQs","Previous-question practice when verified materials are available","Timed mock examinations"],
+   quizCat:"govt", service:"Government Nursing Recruitment Exam Preparation", serviceLabel:"Request preparation help",
+   note:"Previous questions are added only when verified. Sample questions here are not real exam questions."},
+  {letter:"E", icon:"hospital", title:"Private Hospital Recruitment Preparation",
+   points:["Written examination practice","Nursing viva questions","Interview preparation"],
+   quizCat:"private", service:"Private Hospital Written Exam, Interview and Viva Preparation", serviceLabel:"Request preparation help"},
+  {letter:"F", icon:"globe", title:"International Nursing Career Guidance",
+   points:["General guidance about licensing pathways and requirements","Official requirements are clearly separated from educational guidance"],
+   service:"International Healthcare Job Information", serviceLabel:"Request guidance",
+   note:"Guidance is educational only. Official requirements come from the licensing authority, embassy or employer, so always confirm with them."}
+];
+
+/* ==========================================================
+   MCQ DATA – kept separate from the quiz engine below.
+   To add your own VERIFIED questions, add a new set object to
+   QUESTION_SETS (see the example in the instructions).
+   "answer" is the 0-based index of the correct option (0=A ... 3=D).
+   Set "verified: true" only for questions you have checked yourself;
+   sets without it are shown as "Demo / sample".
+   ========================================================== */
+const QUIZ_CONFIG = { MINUTES_PER_QUESTION: 1 };
+
+const QUIZ_CATEGORIES = [
+  {id:"study",     name:"Nursing Study Materials",          icon:"bookOpen"},
+  {id:"nclex",     name:"NCLEX-RN Preparation",             icon:"clipboard"},
+  {id:"prometric", name:"Prometric Exam Preparation",       icon:"graduation"},
+  {id:"govt",      name:"Government Nursing Recruitment",   icon:"landmark"},
+  {id:"private",   name:"Private Hospital Recruitment",     icon:"hospital"}
+];
+
+const QUESTION_SETS = [
+  {
+    id:"sample-study-1", category:"study", subject:"Fundamentals of Nursing", title:"Sample set 1", verified:false,
+    questions:[
+      {q:"What is the normal resting heart rate range for a healthy adult?",
+       options:["40–60 beats per minute","60–100 beats per minute","100–120 beats per minute","120–140 beats per minute"], answer:1,
+       explanation:"A normal adult resting heart rate is generally 60–100 beats per minute."},
+      {q:"Which practice is the most effective way to reduce the spread of infection in healthcare settings?",
+       options:["Wearing gloves for every task","Giving routine antibiotics to all patients","Isolating every patient","Performing hand hygiene at the right moments"], answer:3,
+       explanation:"Hand hygiene at key moments is the single most effective infection-prevention measure. Gloves do not replace it."},
+      {q:"What is the normal resting respiratory rate for a healthy adult?",
+       options:["6–10 breaths per minute","12–20 breaths per minute","24–30 breaths per minute","30–40 breaths per minute"], answer:1,
+       explanation:"A healthy adult at rest normally breathes about 12–20 times per minute."}
+    ]
+  },
+  {
+    id:"sample-nclex-1", category:"nclex", subject:"Patient Safety and Medication", title:"Sample set 1", verified:false,
+    questions:[
+      {q:"Which action best confirms a patient's identity before giving a medication?",
+       options:["Ask, \"Are you Mr. Rahman?\"","Check the room number on the door","Ask a visitor to confirm the name","Use two identifiers, such as full name and date of birth"], answer:3,
+       explanation:"Two patient identifiers are recommended. Yes/no questions, room numbers or visitors are unreliable."},
+      {q:"A client is prescribed a drug but reports a previous severe rash to the same drug. What should the nurse do first?",
+       options:["Give the drug with an antihistamine","Withhold the drug and notify the prescriber","Give half of the dose","Ask the client to take it after discharge"], answer:1,
+       explanation:"Do not give a drug when a serious allergic reaction is reported. Withhold it and inform the prescriber."},
+      {q:"Which finding most reliably suggests effective oxygenation in a client at rest?",
+       options:["Respiratory rate of 34 per minute","Blue discoloration of the lips","SpO2 of 96% on room air with calm, unlabored breathing","Use of accessory muscles to breathe"], answer:2,
+       explanation:"A normal oxygen saturation with easy breathing indicates good oxygenation. The other findings suggest respiratory distress."}
+    ]
+  },
+  {
+    id:"sample-prometric-1", category:"prometric", subject:"Clinical Nursing Basics", title:"Sample set 1", verified:false,
+    questions:[
+      {q:"What is the recommended order for putting on personal protective equipment (PPE)?",
+       options:["Gloves, gown, mask, goggles","Mask, gloves, gown, goggles","Goggles, gloves, mask, gown","Gown, mask, goggles, gloves"], answer:3,
+       explanation:"A commonly taught sequence is gown, mask or respirator, eye protection, then gloves."},
+      {q:"Which signs are typical early indicators of hypovolemic shock?",
+       options:["Bradycardia and warm, dry skin","Tachycardia and restlessness","Severe hypertension","Slow, deep breathing with a full, bounding pulse"], answer:1,
+       explanation:"The body compensates for fluid loss with a faster heart rate, and restlessness is an early sign of poor perfusion."},
+      {q:"Which intravenous solution is isotonic?",
+       options:["0.45% sodium chloride","3% sodium chloride","10% dextrose in water","0.9% sodium chloride"], answer:3,
+       explanation:"0.9% sodium chloride (normal saline) has a similar concentration to body fluids, so it is isotonic."}
+    ]
+  },
+  {
+    id:"sample-govt-1", category:"govt", subject:"General Nursing Knowledge", title:"Sample set 1", verified:false,
+    questions:[
+      {q:"Who is widely regarded as the founder of modern nursing?",
+       options:["Clara Barton","Florence Nightingale","Mary Seacole","Virginia Henderson"], answer:1,
+       explanation:"Florence Nightingale established foundations of modern nursing practice and education."},
+      {q:"On which date is International Nurses Day observed each year?",
+       options:["8 March","7 April","1 December","12 May"], answer:3,
+       explanation:"International Nurses Day is observed on 12 May, the birthday of Florence Nightingale."},
+      {q:"What is the normal oral body temperature range for a healthy adult?",
+       options:["34.0–35.0 °C","38.0–39.0 °C","36.1–37.2 °C","39.5–40.5 °C"], answer:2,
+       explanation:"A normal oral temperature is about 36.1–37.2 °C (97–99 °F)."}
+    ]
+  },
+  {
+    id:"sample-private-1", category:"private", subject:"Written, Viva and Interview Practice", title:"Sample set 1", verified:false,
+    questions:[
+      {q:"Viva: What does the abbreviation \"NPO\" mean in a medical order?",
+       options:["Nursing practice order","Nothing by mouth","Normal pulse observation","Needs physician opinion"], answer:1,
+       explanation:"NPO comes from the Latin \"nil per os\", meaning nothing by mouth."},
+      {q:"Written: Which position is generally recommended for a client who has difficulty breathing?",
+       options:["Supine","Prone","Trendelenburg","High Fowler's position"], answer:3,
+       explanation:"Sitting upright in high Fowler's position lets the lungs expand more easily."},
+      {q:"Interview: A patient's family is upset about a delay. What is the best first response?",
+       options:["Ask them to wait outside until they are calm","Tell them to discuss it with the doctor","Listen calmly, acknowledge their concern and explain what is happening","Explain that hospital routines cannot be changed"], answer:2,
+       explanation:"Listening, showing empathy and giving clear information is the professional first response."}
+    ]
+  }
+];
+
+/* Only well-formed sets are used, so a typo in new data cannot break the page. */
+const SETS = QUESTION_SETS.filter(function(s){
+  const ok = s && s.id && s.category && Array.isArray(s.questions) && s.questions.length > 0 &&
+    s.questions.every(function(q){
+      return q && typeof q.q === "string" && Array.isArray(q.options) && q.options.length === 4 &&
+        Number.isInteger(q.answer) && q.answer >= 0 && q.answer < 4;
+    });
+  if (!ok) console.warn("Skipping invalid question set:", s && s.id);
+  return ok;
+});
+function setsFor(cat){ return SETS.filter(function(s){ return s.category === cat; }); }
 
 /* ---------- icons (trusted constants only) ---------- */
 const ICONS = {
@@ -436,8 +793,10 @@ const ICONS = {
   check:`<path d="M20 6 9 17l-5-5"/>`,
   checkCircle:`<path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3L22 4"/>`,
   alert:`<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>`,
+  info:`<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>`,
   search:`<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>`,
   refresh:`<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>`,
+  play:`<polygon points="6 4 20 12 6 20 6 4"/>`,
   fileText:`<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>`,
   briefcase:`<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>`,
   linkedin:`<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>`,
@@ -471,6 +830,7 @@ function fillIcons(){
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
 const prefersReduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+const LETTERS = ["A", "B", "C", "D"];
 
 function el(tag, props = {}, kids = []){
   const n = document.createElement(tag);
@@ -510,6 +870,10 @@ function keyIsSet(){
 function isKeyError(err){
   return !!(err && /invalid api key|invalid jwt|jwt/i.test(err.message || ""));
 }
+function fmtTime(sec){
+  const m = Math.floor(sec / 60), s = sec % 60;
+  return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+}
 
 /* ---------- Supabase client ---------- */
 let sb = null;
@@ -538,11 +902,30 @@ document.addEventListener("keydown", function(e){
   if (e.key === "Escape" && mobileMenu.classList.contains("open")){ setMenu(false); menuBtn.focus(); }
 });
 
-/* services cards + form selects */
+/* highlight the current section in the navigation */
+(function navSpy(){
+  if (!("IntersectionObserver" in window)) return;
+  const links = Array.prototype.slice.call(document.querySelectorAll(".links a.nl, .mobile-menu a"));
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      links.forEach(function(a){
+        if (a.getAttribute("href") === "#" + en.target.id) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    });
+  }, {rootMargin: "-40% 0px -55% 0px"});
+  ["home", "jobs", "services", "prep", "mcq", "contact"].forEach(function(id){
+    const s = document.getElementById(id);
+    if (s) io.observe(s);
+  });
+})();
+
+/* career service cards */
 (function buildServices(){
   const grid = $("#servicesGrid");
-  SERVICES.forEach(function(s){
-    const order = el("a", {class:"btn btn-primary sm", href:"#order", "data-service":s.name}, [icon("arrowRight", 16), "Order this service"]);
+  CAREER_SERVICES.forEach(function(s){
+    const order = el("a", {class:"btn btn-primary sm", href:"#order", "data-service":s.name}, [icon("arrowRight", 16), "Order Service"]);
     const wa = el("a", {class:"btn btn-ghost sm", href:waLink("Hello, I am interested in: " + s.name), target:"_blank", rel:"noopener noreferrer"}, [icon("whatsapp", 16), "Ask on WhatsApp"]);
     grid.append(el("article", {class:"card svc"}, [
       el("div", {class:"svc-ic"}, icon(s.icon, 26)),
@@ -551,23 +934,36 @@ document.addEventListener("keydown", function(e){
       el("div", {class:"actions"}, [order, wa])
     ]));
   });
+})();
 
-  grid.addEventListener("click", function(e){
-    const a = e.target.closest("a[data-service]");
-    if (!a) return;
-    const sel = $("#service_type");
-    sel.value = a.dataset.service;
-    setErr("service_type", "");
-    if (!prefersReduced){
-      sel.classList.remove("flash");
-      void sel.offsetWidth;
-      sel.classList.add("flash");
-    }
+/* exam preparation track cards */
+(function buildPrep(){
+  const grid = $("#prepGrid");
+  PREP_TRACKS.forEach(function(t){
+    const hasQuiz = t.quizCat && setsFor(t.quizCat).length > 0;
+    const actions = el("div", {class:"actions"});
+    if (hasQuiz) actions.append(el("a", {class:"btn btn-primary sm", href:"#mcq", "data-quiz-cat":t.quizCat}, [icon("play", 16), "Practice MCQs"]));
+    if (t.service) actions.append(el("a", {class:"btn btn-ghost sm", href:"#order", "data-service":t.service, text:t.serviceLabel || "Request this service"}));
+    else actions.append(el("a", {class:"btn btn-ghost sm", href:waLink("Hello, I want to know about: " + t.title), target:"_blank", rel:"noopener noreferrer"}, [icon("whatsapp", 16), "Ask on WhatsApp"]));
+
+    const ticks = el("ul", {class:"ticks"}, t.points.map(function(p){ return el("li", {}, [icon("check", 16), p]); }));
+    const head = el("div", {class:"prep-head"}, [el("span", {class:"letter", text:t.letter}), el("span", {class:"svc-ic", style:"width:40px;height:40px;border-radius:12px"}, icon(t.icon, 22))]);
+    const card = el("article", {class:"card prep-card"}, [head, el("h3", {text:t.title}), ticks]);
+    if (t.note) card.append(el("p", {class:"note", text:t.note}));
+    card.append(actions);
+    grid.append(card);
   });
+})();
 
+/* order-form selects */
+(function buildSelects(){
   const svc = $("#service_type");
   svc.append(el("option", {value:"", text:"Select a service"}));
-  SERVICES.forEach(function(s){ svc.append(el("option", {value:s.name, text:s.name})); });
+  const g1 = el("optgroup", {label:"Career Services"});
+  CAREER_SERVICES.forEach(function(s){ g1.append(el("option", {value:s.name, text:s.name})); });
+  const g2 = el("optgroup", {label:"Exam Preparation & Study Support"});
+  OTHER_SERVICES.forEach(function(n){ g2.append(el("option", {value:n, text:n})); });
+  svc.append(g1, g2);
 
   const ctry = $("#target_country");
   ctry.append(el("option", {value:"", text:"Select a country"}));
@@ -732,13 +1128,15 @@ function setErr(name, msg){
 }
 function showAlert(type, text, extra){
   const a = $("#formAlert");
+  a.hidden = false;
   a.className = "alert " + (type === "ok" ? "ok" : "bad");
   a.replaceChildren(icon(type === "ok" ? "checkCircle" : "alert", 22), el("div", {}, [el("p", {text:text}), extra || ""]));
   a.scrollIntoView({behavior: prefersReduced ? "auto" : "smooth", block:"nearest"});
 }
 function clearAlert(){
   const a = $("#formAlert");
-  a.className = "hidden";
+  a.className = "";
+  a.hidden = true;
   a.replaceChildren();
 }
 function updateCounter(){
@@ -770,6 +1168,23 @@ FIELDS.forEach(function(n){
   const f = form.elements[n];
   f.addEventListener("input", function(){ setErr(n, ""); if (n === "details") updateCounter(); });
   f.addEventListener("change", function(){ setErr(n, ""); });
+});
+
+/* "Order" buttons anywhere on the page pre-select the matching service */
+document.addEventListener("click", function(e){
+  const a = e.target.closest("[data-service]");
+  if (!a) return;
+  const sel = $("#service_type");
+  const wanted = a.dataset.service;
+  const known = Array.prototype.some.call(sel.options, function(o){ return o.value === wanted; });
+  if (!known) return;
+  sel.value = wanted;
+  setErr("service_type", "");
+  if (!prefersReduced){
+    sel.classList.remove("flash");
+    void sel.offsetWidth;
+    sel.classList.add("flash");
+  }
 });
 
 form.addEventListener("submit", async function(e){
@@ -850,18 +1265,359 @@ form.addEventListener("submit", async function(e){
   }
 });
 
-/* hide the floating WhatsApp button while the order form is on screen */
+/* ==========================================================
+   MCQ ENGINE (reads from QUESTION_SETS above)
+   ========================================================== */
+const quiz = {
+  catId: null, setId: null, mode: "practice",
+  set: null, questions: [], answers: [], checked: [], current: 0,
+  submitted: false, timerId: null, startedAt: 0, endsAt: 0, totalSeconds: 0, warned: false
+};
+
+function showView(name){
+  $("#quizSetup").hidden = name !== "setup";
+  $("#quizRun").hidden = name !== "run";
+  $("#quizResult").hidden = name !== "result";
+}
+function setView(name){
+  showView(name);
+  const card = $("#quizCard");
+  card.scrollIntoView({behavior: prefersReduced ? "auto" : "smooth", block:"start"});
+  const target = name === "setup" ? $("#setupHeading") : (name === "run" ? $("#qText") : $("#resultHeading"));
+  if (target) target.focus({preventScroll:true});
+}
+
+function limitSeconds(set){
+  const mins = Number(set.timeLimitMinutes) > 0 ? Number(set.timeLimitMinutes) : set.questions.length * QUIZ_CONFIG.MINUTES_PER_QUESTION;
+  return Math.max(60, Math.round(mins * 60));
+}
+function currentSet(){
+  return SETS.find(function(s){ return s.id === quiz.setId; }) || null;
+}
+
+/* ----- setup screen ----- */
+function renderSetup(){
+  const body = $("#quizSetupBody"), empty = $("#quizEmpty");
+  if (!SETS.length){ body.hidden = true; empty.hidden = false; return; }
+  body.hidden = false; empty.hidden = true;
+
+  if (!quiz.catId || !setsFor(quiz.catId).length){
+    const first = QUIZ_CATEGORIES.find(function(c){ return setsFor(c.id).length > 0; });
+    quiz.catId = first ? first.id : null;
+  }
+  const cats = $("#quizCats");
+  cats.replaceChildren.apply(cats, QUIZ_CATEGORIES.map(function(c){
+    const sets = setsFor(c.id);
+    const qn = sets.reduce(function(n, s){ return n + s.questions.length; }, 0);
+    const info = sets.length
+      ? sets.length + (sets.length === 1 ? " set · " : " sets · ") + qn + " questions"
+      : "No question sets yet";
+    const b = el("button", {class:"cat-btn", type:"button", "data-cat":c.id, "aria-pressed":String(c.id === quiz.catId)}, [
+      el("span", {class:"svc-ic"}, icon(c.icon, 22)),
+      el("span", {}, [el("b", {text:c.name}), el("small", {text:info})])
+    ]);
+    if (!sets.length) b.disabled = true;
+    return b;
+  }));
+  renderSetList();
+}
+
+function renderSetList(){
+  const box = $("#quizSets");
+  const list = quiz.catId ? setsFor(quiz.catId) : [];
+  if (!list.some(function(s){ return s.id === quiz.setId; })) quiz.setId = list.length ? list[0].id : null;
+  box.replaceChildren.apply(box, list.map(function(s){
+    const input = el("input", {type:"radio", name:"quizSet", value:s.id});
+    if (s.id === quiz.setId) input.checked = true;
+    const badge = el("span", {class:"badge " + (s.verified === true ? "good" : "type"), text: s.verified === true ? "Verified" : "Demo / sample"});
+    const label = el("label", {class:"pick"}, [
+      input,
+      el("span", {class:"box"}, [
+        el("span", {class:"dot"}),
+        el("span", {}, [el("b", {text:s.subject || s.title || "Question set"}), el("small", {text:(s.title || "") + (s.title ? " · " : "") + s.questions.length + " questions"}), badge])
+      ])
+    ]);
+    return label;
+  }));
+  $("#quizStart").disabled = !quiz.setId;
+  if (!list.length) box.append(el("p", {class:"note", text:"No subjects available in this category yet."}));
+  updateTimedInfo();
+}
+
+function updateTimedInfo(){
+  const set = currentSet();
+  $("#timedInfo").textContent = set
+    ? "Countdown timer: " + Math.round(limitSeconds(set) / 60) + " min. Submits automatically at zero."
+    : "Countdown timer. Submits automatically at zero.";
+}
+
+$("#quizCats").addEventListener("click", function(e){
+  const b = e.target.closest("button[data-cat]");
+  if (!b || b.disabled) return;
+  quiz.catId = b.dataset.cat;
+  renderSetup();
+});
+$("#quizSets").addEventListener("change", function(e){
+  if (e.target.name === "quizSet"){ quiz.setId = e.target.value; updateTimedInfo(); }
+});
+document.querySelectorAll('input[name="quizMode"]').forEach(function(r){
+  r.addEventListener("change", function(){ if (r.checked) quiz.mode = r.value; });
+});
+
+/* open a category from the exam-preparation cards */
+function openQuizCategory(id){
+  if (!$("#quizRun").hidden) return;   // never interrupt a test in progress
+  showView("setup");
+  if (setsFor(id).length) quiz.catId = id;
+  renderSetup();
+}
+document.addEventListener("click", function(e){
+  const a = e.target.closest("[data-quiz-cat]");
+  if (a) openQuizCategory(a.dataset.quizCat);
+});
+
+/* ----- timer ----- */
+function stopTimer(){
+  if (quiz.timerId){ clearInterval(quiz.timerId); quiz.timerId = null; }
+}
+function tick(){
+  const left = Math.max(0, Math.ceil((quiz.endsAt - Date.now()) / 1000));
+  $("#quizTimer").textContent = fmtTime(left);
+  $("#timerBox").classList.toggle("low", left <= 60);
+  if (left <= 60 && !quiz.warned){
+    quiz.warned = true;
+    $("#quizLive").textContent = "One minute remaining.";
+  }
+  if (left <= 0) submitTest(true);
+}
+function startTimer(){
+  quiz.totalSeconds = limitSeconds(quiz.set);
+  quiz.endsAt = Date.now() + quiz.totalSeconds * 1000;
+  quiz.warned = false;
+  $("#timerBox").hidden = false;
+  tick();
+  quiz.timerId = setInterval(tick, 500);
+}
+
+/* ----- start / run ----- */
+function startQuiz(){
+  const set = currentSet();
+  if (!set) return;
+  const modeInput = document.querySelector('input[name="quizMode"]:checked');
+  quiz.mode = modeInput ? modeInput.value : "practice";
+  stopTimer();
+  quiz.set = set;
+  quiz.questions = set.questions;
+  quiz.answers = new Array(set.questions.length).fill(null);
+  quiz.checked = new Array(set.questions.length).fill(false);
+  quiz.current = 0;
+  quiz.submitted = false;
+  quiz.startedAt = Date.now();
+
+  ["btnSubmit", "btnConfirmYes", "btnPrev", "btnNext", "btnCheck"].forEach(function(id){ $("#" + id).disabled = false; });
+  $("#submitConfirm").hidden = true;
+  $("#qFeedback").hidden = true;
+  $("#quizTitle").textContent = (set.subject || "Test") + (set.title ? " – " + set.title : "");
+  $("#quizModeBadge").textContent = quiz.mode === "timed" ? "Timed Mock Test" : "Practice Mode";
+  $("#quizDemoBadge").hidden = set.verified === true;
+  $("#btnCheck").hidden = quiz.mode === "timed";
+  $("#qProgress").setAttribute("aria-valuemax", String(set.questions.length));
+  $("#timerBox").hidden = true;
+
+  setView("run");
+  if (quiz.mode === "timed") startTimer();
+  renderQuestion();
+  updateNav();
+}
+
+function updateAnswered(){
+  const done = quiz.answers.filter(function(a){ return a != null; }).length;
+  $("#qAnswered").textContent = done + " of " + quiz.questions.length + " answered";
+}
+
+function updateNav(){
+  const nav = $("#qNav");
+  nav.replaceChildren.apply(nav, quiz.questions.map(function(_, k){
+    const answered = quiz.answers[k] != null;
+    const b = el("button", {type:"button", class:"qn" + (k === quiz.current ? " cur" : "") + (answered ? " done" : ""),
+      "aria-label":"Go to question " + (k + 1) + (answered ? ", answered" : ", not answered"), text:String(k + 1)});
+    if (k === quiz.current) b.setAttribute("aria-current", "true");
+    b.addEventListener("click", function(){ goTo(k); });
+    return b;
+  }));
+  updateAnswered();
+}
+
+function goTo(k){
+  if (quiz.submitted || k < 0 || k >= quiz.questions.length) return;
+  quiz.current = k;
+  $("#submitConfirm").hidden = true;
+  renderQuestion();
+  updateNav();
+  $("#qText").focus({preventScroll:true});
+}
+
+function clearOptionMarks(){
+  document.querySelectorAll("#qChoices .opt").forEach(function(l){ l.classList.remove("correct", "wrong"); });
+}
+
+function renderQuestion(){
+  const n = quiz.questions.length, i = quiz.current, q = quiz.questions[i];
+  $("#qProgressText").textContent = "Question " + (i + 1) + " of " + n;
+  $("#qProgressBar").style.width = ((i + 1) / n * 100) + "%";
+  $("#qProgress").setAttribute("aria-valuenow", String(i + 1));
+  $("#qText").textContent = q.q;
+
+  const group = $("#qChoices");
+  group.replaceChildren.apply(group, q.options.map(function(opt, k){
+    const input = el("input", {type:"radio", name:"qopt", value:String(k)});
+    if (quiz.answers[i] === k) input.checked = true;
+    input.addEventListener("change", function(){
+      quiz.answers[i] = k;
+      quiz.checked[i] = false;
+      $("#qFeedback").hidden = true;
+      clearOptionMarks();
+      updateNav();
+    });
+    return el("label", {class:"pick opt"}, [
+      input,
+      el("span", {class:"box"}, [el("span", {class:"key", text:LETTERS[k]}), el("span", {text:String(opt)})])
+    ]);
+  }));
+
+  $("#btnPrev").disabled = quiz.submitted || i === 0;
+  $("#btnNext").disabled = quiz.submitted || i === n - 1;
+  $("#qFeedback").hidden = true;
+  if (quiz.checked[i]) showFeedback();
+}
+
+function showFeedback(){
+  const i = quiz.current, q = quiz.questions[i], fb = $("#qFeedback");
+  fb.hidden = false;
+  if (quiz.answers[i] == null){
+    fb.className = "alert bad";
+    fb.replaceChildren(icon("alert", 20), el("p", {text:"Select an answer first, then check it."}));
+    return;
+  }
+  quiz.checked[i] = true;
+  const ok = quiz.answers[i] === q.answer;
+  document.querySelectorAll("#qChoices .opt").forEach(function(l, k){
+    l.classList.toggle("correct", k === q.answer);
+    l.classList.toggle("wrong", k === quiz.answers[i] && k !== q.answer);
+  });
+  fb.className = "alert " + (ok ? "ok" : "bad");
+  const lines = [el("p", {}, [el("b", {text: ok ? "Correct. " : "Not quite. "}), ok ? "" : "Correct answer: " + LETTERS[q.answer] + ". " + q.options[q.answer]])];
+  if (q.explanation) lines.push(el("p", {text:q.explanation}));
+  fb.replaceChildren(icon(ok ? "checkCircle" : "alert", 20), el("div", {}, lines));
+}
+
+$("#btnPrev").addEventListener("click", function(){ goTo(quiz.current - 1); });
+$("#btnNext").addEventListener("click", function(){ goTo(quiz.current + 1); });
+$("#btnCheck").addEventListener("click", function(){ if (!quiz.submitted) showFeedback(); });
+$("#quizStart").addEventListener("click", startQuiz);
+
+/* ----- submit ----- */
+$("#btnSubmit").addEventListener("click", function(){
+  if (quiz.submitted) return;
+  const un = quiz.answers.filter(function(a){ return a == null; }).length;
+  if (un > 0){
+    $("#submitMsg").textContent = "You have " + un + (un === 1 ? " unanswered question." : " unanswered questions.") + " Unanswered questions score zero. Submit anyway?";
+    $("#submitConfirm").hidden = false;
+    $("#btnConfirmYes").focus();
+  } else {
+    submitTest(false);
+  }
+});
+$("#btnConfirmYes").addEventListener("click", function(){ submitTest(false); });
+$("#btnConfirmNo").addEventListener("click", function(){
+  $("#submitConfirm").hidden = true;
+  $("#btnSubmit").focus();
+});
+
+function submitTest(auto){
+  if (quiz.submitted) return;       // prevents double submission (button + timer)
+  quiz.submitted = true;
+  stopTimer();
+  ["btnSubmit", "btnConfirmYes", "btnPrev", "btnNext", "btnCheck"].forEach(function(id){ $("#" + id).disabled = true; });
+  $("#submitConfirm").hidden = true;
+  const used = quiz.mode === "timed" ? Math.min(quiz.totalSeconds, Math.round((Date.now() - quiz.startedAt) / 1000)) : null;
+  renderResults(auto, used);
+  setView("result");
+}
+
+function renderResults(auto, usedSeconds){
+  const n = quiz.questions.length;
+  let correct = 0, wrong = 0, skipped = 0;
+  quiz.questions.forEach(function(q, i){
+    const a = quiz.answers[i];
+    if (a == null) skipped++;
+    else if (a === q.answer) correct++;
+    else wrong++;
+  });
+  const pct = Math.round(correct / n * 100);
+  $("#scoreRing").style.setProperty("--p", String(pct));
+  $("#scorePct").textContent = pct + "%";
+  $("#scoreText").textContent = correct + " / " + n;
+  $("#statCorrect").textContent = String(correct);
+  $("#statWrong").textContent = String(wrong);
+  $("#statSkipped").textContent = String(skipped);
+  $("#resultSub").textContent = ($("#quizTitle").textContent || "Test") + " · " + (quiz.mode === "timed" ? "Timed Mock Test" : "Practice Mode") +
+    (usedSeconds != null ? " · Time used " + fmtTime(usedSeconds) : "");
+
+  const notes = [];
+  if (auto) notes.push("Time ran out, so your test was submitted automatically.");
+  if (quiz.set.verified !== true) notes.push("This was a demo set of sample questions. The result does not reflect real exam performance or guarantee exam success.");
+  const noteBox = $("#resultNote");
+  noteBox.hidden = notes.length === 0;
+  noteBox.replaceChildren(icon("info", 20), el("div", {}, notes.map(function(t){ return el("p", {text:t}); })));
+
+  const list = $("#reviewList");
+  list.replaceChildren.apply(list, quiz.questions.map(function(q, i){
+    const a = quiz.answers[i];
+    const status = a == null ? "skipped" : (a === q.answer ? "correct" : "wrong");
+    const label = status === "correct" ? "Correct" : (status === "wrong" ? "Incorrect" : "Not answered");
+    const card = el("article", {class:"review " + status}, [
+      el("div", {class:"meta"}, [
+        el("span", {class:"badge " + (status === "correct" ? "good" : (status === "wrong" ? "bad" : "exp")), text:label}),
+        el("span", {class:"posted", text:"Question " + (i + 1)})
+      ]),
+      el("p", {class:"rq", text:q.q}),
+      el("p", {}, [el("b", {text:"Your answer: "}), a == null ? "Not answered" : LETTERS[a] + ". " + q.options[a]]),
+      el("p", {}, [el("b", {text:"Correct answer: "}), LETTERS[q.answer] + ". " + q.options[q.answer]])
+    ]);
+    if (q.explanation) card.append(el("p", {class:"rexp"}, [el("b", {text:"Explanation: "}), q.explanation]));
+    return card;
+  }));
+}
+
+document.querySelectorAll(".js-retry").forEach(function(b){ b.addEventListener("click", startQuiz); });
+document.querySelectorAll(".js-back").forEach(function(b){
+  b.addEventListener("click", function(){
+    stopTimer();
+    renderSetup();
+    setView("setup");
+  });
+});
+
+/* hide the floating WhatsApp button while the order form or a test is on screen */
 (function floatWatcher(){
   const float = $(".wa-float");
   if (!float || !("IntersectionObserver" in window)) return;
-  new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ float.classList.toggle("hide", en.isIntersecting); });
-  }, {threshold: 0.05}).observe(form);
+  const visible = new Set();
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target);
+    });
+    float.classList.toggle("hide", visible.size > 0);
+  }, {threshold: 0.05});
+  io.observe(form);
+  io.observe($("#quizCard"));
 })();
 
 /* ---------- start ---------- */
 updateCounter();
+renderSetup();
 loadJobs();
 </script>
 </body>
-  </html>
+</html>
