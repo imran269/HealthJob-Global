@@ -23,6 +23,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+body.modal-open{overflow:hidden}
 svg{display:block;max-width:100%}
 a{color:var(--brand)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
@@ -107,7 +108,7 @@ h3{font-size:1.1rem}
 /* cards */
 .grid{display:grid;gap:16px;grid-template-columns:1fr}
 @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1060px){.grid.jobs,.grid.prep{grid-template-columns:repeat(3,1fr)}.grid.svc{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1060px){.grid.jobs,.grid.prep,.grid.three{grid-template-columns:repeat(3,1fr)}.grid.svc{grid-template-columns:repeat(4,1fr)}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .2s}
 @media(hover:hover){.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}}
 .card h3{margin:0}
@@ -138,7 +139,6 @@ details p{white-space:pre-line;margin:8px 0 0;font-size:.93rem;color:var(--muted
 .ticks li{display:flex;gap:8px;align-items:flex-start;font-size:.94rem;color:var(--ink)}
 .ticks .ic{color:var(--brand);margin-top:3px}
 .note{font-size:.82rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:0}
-.cat-title{display:flex;align-items:center;gap:10px;margin:0 0 6px}
 .divider-note{display:flex;gap:12px;align-items:flex-start;background:#fff7e6;border:1px solid #f8d99a;color:#5c3b00;border-radius:12px;padding:12px 14px;margin:0 0 22px;font-size:.93rem}
 .divider-note p{margin:0}
 
@@ -266,6 +266,108 @@ fieldset.qfield{border:0;margin:0;padding:0;min-width:0}
 .rq{font-weight:700}
 .rexp{background:var(--bg);border-radius:10px;padding:10px 12px;font-size:.93rem}
 
+/* ==========================================================
+   CV & PROFILE PORTFOLIO (demo samples)
+   ========================================================== */
+.portfolio{margin-top:60px;padding-top:44px;border-top:1px solid var(--line)}
+h3.sub-h{display:flex;align-items:center;gap:10px;margin:30px 0 14px;font-size:1.25rem}
+h3.sub-h .ic{color:var(--brand)}
+.blurb{margin:0;color:var(--muted);font-size:.94rem}
+
+/* CV thumbnail in cards */
+.cv-thumb{position:relative;aspect-ratio:5/6;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:#dfe8eb;pointer-events:none}
+.cv-thumb .cv{position:absolute;left:0;top:0;transform-origin:0 0}
+.cv-thumb:after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.95))}
+
+/* CV paper (designed at 600px wide, scaled by JS) */
+.cv{width:600px;background:#fff;color:#1c2b33;font-size:12.5px;line-height:1.45;position:relative;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:left}
+.cv *{box-sizing:border-box}
+.cv h4{margin:0}
+.cv p{margin:0}
+.cv .demo-tag{position:absolute;right:0;top:0;z-index:3;background:var(--accent);color:#2b1d00;font-weight:800;font-size:10px;letter-spacing:.08em;padding:4px 12px;border-bottom-left-radius:10px}
+.cv .wm{position:absolute;inset:0;z-index:2;display:grid;place-items:center;pointer-events:none;overflow:hidden}
+.cv .wm span{transform:rotate(-30deg);font-size:92px;font-weight:900;letter-spacing:.08em;color:rgba(15,118,110,.08);white-space:nowrap}
+.cv .st{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#0f766e;border-bottom:1.5px solid #cfe6e2;padding-bottom:3px;margin:14px 0 8px}
+.cv .st:first-child{margin-top:0}
+.cv .cvname{font-size:24px;line-height:1.15;letter-spacing:-.01em}
+.cv .cvrole{font-weight:600;color:#0b5a54;margin-top:2px}
+.cv .namebl{padding-right:64px}
+.cv .cvl{margin:3px 0 0;padding-left:16px}
+.cv .cvl li{margin-bottom:2px}
+.cv .job{margin-bottom:10px}
+.cv .jt{font-weight:700}
+.cv .jo{color:#4b5b66;font-size:11.5px}
+.cv .tags{display:flex;flex-wrap:wrap;gap:5px}
+.cv .tag{background:#e6f4f2;color:#0b5a54;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:600}
+.cv .cvfoot{margin-top:16px;padding-top:8px;border-top:1px dashed #cdd9de;font-size:10px;color:#6a7a85}
+/* layout A: teal sidebar (fresh graduate) */
+.cv-a{display:grid;grid-template-columns:185px 1fr;min-height:760px}
+.cv-a .side{background:#0b5a54;color:#fff;padding:30px 16px 20px}
+.cv-a .side .st{color:#bfece5;border-bottom-color:rgba(255,255,255,.25)}
+.cv-a .side .cvc div{font-size:11.5px;margin-bottom:5px;word-break:break-word}
+.cv-a .side .tag{background:rgba(255,255,255,.16);color:#fff}
+.cv-a .side .cvl{padding-left:14px}
+.cv-a .mainc{padding:30px 22px 20px}
+/* layout B: header band (experienced) */
+.cv-b .head{background:linear-gradient(120deg,#0f766e,#0b5a54);color:#fff;padding:26px 28px 18px}
+.cv-b .head .cvrole{color:#d7f3ee}
+.cv-b .head .cvc{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:11.5px}
+.cv-b .cbody{padding:20px 28px 22px}
+.cv-b .sidec{margin-top:2px}
+/* layout C: international, with details grid */
+.cv-c .head{padding:26px 28px 14px;border-bottom:4px solid #0f766e}
+.cv-c .head .cvc{display:flex;flex-wrap:wrap;gap:3px 16px;margin-top:8px;font-size:11.5px;color:#4b5b66}
+.cv-c .details{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin-top:12px;font-size:11.5px}
+.cv-c .details b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#0f766e}
+.cv-c .cbody{display:grid;grid-template-columns:1fr 175px;min-height:470px}
+.cv-c .mainc{padding:18px 20px 20px 28px}
+.cv-c .sidec{background:#eef7f5;padding:18px 16px}
+
+/* LinkedIn-style profile demos */
+.li-card{padding:0;gap:0;overflow:hidden}
+.li-card .li{border:0;border-radius:0}
+.li-card .actions{padding:4px 18px 18px;margin-top:0}
+.li{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.li-banner{height:76px;background:linear-gradient(120deg,#0f766e,#0f2a43);display:flex;justify-content:flex-end;align-items:flex-start;padding:10px}
+.li-head{padding:0 18px 14px}
+.li-avatar{width:68px;height:68px;border-radius:50%;background:var(--mint);color:var(--brand-dark);border:4px solid #fff;display:grid;place-items:center;font-weight:800;font-size:1.3rem;margin-top:-34px}
+.li-name{font-weight:800;font-size:1.15rem;margin:8px 0 2px}
+.li-headline{margin:0;font-size:.95rem}
+.li-loc{color:var(--muted);font-size:.85rem;margin:4px 0 0}
+.li-sec{padding:14px 18px;border-top:1px solid var(--line)}
+.li-sec h4{margin:0 0 8px;font-size:1rem}
+.li-snip{margin:0 0 10px;color:var(--muted);font-size:.93rem;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.li-about{margin:0;font-size:.95rem;color:var(--ink)}
+.li-chips{display:flex;flex-wrap:wrap;gap:6px}
+.li-chip{display:inline-block;background:var(--mint);color:var(--brand-dark);padding:3px 10px;border-radius:99px;font-size:.8rem;font-weight:700}
+.li-exp{display:flex;gap:12px;margin-bottom:14px}
+.li-exp:last-child{margin-bottom:0}
+.li-logo{width:40px;height:40px;border-radius:8px;background:var(--mint);color:var(--brand-dark);display:grid;place-items:center;flex:0 0 auto}
+.li-exp ul{margin:6px 0 0;padding-left:18px;font-size:.92rem;color:var(--muted)}
+.li-list{margin:0;padding-left:18px;font-size:.93rem}
+.li-list li{margin-bottom:4px}
+.li-note{padding:12px 18px 16px;border-top:1px solid var(--line)}
+.li-full{max-width:680px;margin:0 auto}
+
+/* modal */
+dialog.demo-modal{border:0;padding:0;border-radius:20px;width:min(920px,calc(100vw - 20px));max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);box-shadow:var(--shadow-lg);background:#fff;color:var(--ink);overflow:hidden}
+dialog.demo-modal[open]{display:flex;flex-direction:column}
+dialog.demo-modal::backdrop{background:rgba(11,27,36,.62)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);background:#fff}
+.modal-head h3{margin:0 0 4px}
+.modal-body{overflow:auto;padding:16px;background:#e9eff2;flex:1 1 auto;-webkit-overflow-scrolling:touch}
+.modal-body.li-body{background:var(--bg)}
+.modal-foot{display:flex;gap:10px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);background:#fff}
+.modal-foot .btn{flex:1 1 150px}
+.cv-stage{position:relative;margin:0 auto;overflow:hidden;border-radius:6px;box-shadow:0 6px 24px rgba(19,33,43,.18);background:#fff}
+.cv-stage .cv{transform-origin:0 0}
+@media(max-width:700px){
+  /* phones: show the CV at full readable width instead of shrinking it */
+  .modal-cv .cv{width:100%;font-size:14px;transform:none!important}
+  .modal-cv .cv-a,.modal-cv .cv-c .cbody{grid-template-columns:1fr;min-height:0}
+  .modal-cv .cv .wm span{font-size:60px}
+}
+
 /* footer */
 footer{background:var(--navy);color:#cfdbe6;padding:44px 0 100px;font-size:.95rem}
 footer h3{color:#fff;font-size:1rem}
@@ -371,13 +473,30 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     </div>
   </section>
 
-  <!-- CAREER SERVICES -->
+  <!-- CAREER SERVICES (+ CV & PROFILE PORTFOLIO) -->
   <section id="services">
     <div class="wrap">
       <span class="eyebrow">Career Services</span>
       <h2>Career Services</h2>
-      <p class="sub">Professional help to present your qualifications clearly and apply with confidence.</p>
+      <p class="sub">Professional help to present your qualifications clearly and apply with confidence. <a href="#portfolio">See sample CVs and profile demos</a>.</p>
       <div class="grid svc" id="servicesGrid"></div>
+
+      <div class="portfolio" id="portfolio">
+        <span class="eyebrow">Sample work</span>
+        <h2>CV &amp; Profile Portfolio</h2>
+        <p class="sub">See how a professional nursing CV and online profile can look. Every sample below is a fictional demo.</p>
+        <div class="divider-note">
+          <span class="ic" data-icon="info" data-size="20"></span>
+          <p><b>All samples are DEMOS.</b> Names, hospitals, dates and contact details are made up. Your real CV or profile is written from your own verified information.</p>
+        </div>
+
+        <h3 class="sub-h"><span class="ic" data-icon="fileText" data-size="22"></span>Demo CV Gallery</h3>
+        <div class="grid three" id="cvGrid"></div>
+
+        <h3 class="sub-h"><span class="ic" data-icon="linkedin" data-size="22"></span>LinkedIn-style Profile Demos</h3>
+        <div class="grid" id="liGrid"></div>
+        <p class="note" style="margin-top:16px">Fictional demos for illustration. They are not real people or real LinkedIn accounts, and HealthJob Global is not affiliated with LinkedIn.</p>
+      </div>
     </div>
   </section>
 
@@ -594,6 +713,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
         <h3>Programs</h3>
         <ul>
           <li><a href="#services">Career Services</a></li>
+          <li><a href="#portfolio">CV &amp; Profile Portfolio</a></li>
           <li><a href="#prep">Exam Preparation</a></li>
           <li><a href="#how">How it works</a></li>
         </ul>
@@ -613,6 +733,19 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 </footer>
 
 <a class="wa-float js-wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><span class="ic" data-icon="whatsapp" data-size="28"></span></a>
+
+<!-- Demo preview modal (CV samples and profile demos) -->
+<dialog class="demo-modal" id="demoModal" aria-labelledby="demoModalTitle">
+  <div class="modal-head">
+    <div>
+      <h3 id="demoModalTitle"></h3>
+      <span class="badge type" id="demoModalBadge"></span>
+    </div>
+    <button type="button" class="icon-btn" id="demoModalClose" aria-label="Close preview"><span class="ic" data-icon="close"></span></button>
+  </div>
+  <div class="modal-body" id="demoModalBody"></div>
+  <div class="modal-foot" id="demoModalFoot"></div>
+</dialog>
 
 <!-- Pinned Supabase JS client (UMD build) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -677,6 +810,121 @@ const PREP_TRACKS = [
    points:["General guidance about licensing pathways and requirements","Official requirements are clearly separated from educational guidance"],
    service:"International Healthcare Job Information", serviceLabel:"Request guidance",
    note:"Guidance is educational only. Official requirements come from the licensing authority, embassy or employer, so always confirm with them."}
+];
+
+/* ==========================================================
+   PORTFOLIO DEMO DATA – every person, employer, date and
+   contact detail below is FICTIONAL. Edit freely.
+   layout: "a" = teal sidebar, "b" = header band, "c" = international
+   section types: text | tags | list | jobs
+   ========================================================== */
+const CV_SAMPLES = [
+  {
+    id:"fresh", layout:"a", title:"Fresh Diploma Nurse CV",
+    blurb:"Entry-level layout for new graduates. It highlights clinical training, skills and education.",
+    name:"Nusrat Karim", role:"Diploma Nurse · Fresh Graduate",
+    contact:["Phone: +880 1XXX-XXXXXX (sample)","Email: nusrat.demo@example.com","Location: Dhaka, Bangladesh (sample)"],
+    main:[
+      {title:"Profile", type:"text", text:"Motivated and compassionate fresh diploma nurse seeking an entry-level staff nurse position. Completed supervised clinical placements in medical, surgical and maternity wards, with a focus on patient safety, accurate documentation and respectful communication."},
+      {title:"Clinical Training", type:"jobs", items:[
+        {title:"Clinical Placement – Medical and Surgical Wards", org:"Sample Metro General Hospital (fictional)", period:"2025 – 2026",
+         points:["Assisted with vital signs, hygiene care, mobility and feeding under supervision","Practised wound dressing, catheter care and medication rounds with senior nurses","Recorded patient observations accurately in care charts"]},
+        {title:"Clinical Placement – Maternity and Child Health", org:"Demo Mother and Child Care Centre (fictional)", period:"2025",
+         points:["Supported antenatal checks and newborn care routines","Gave basic hygiene and breastfeeding guidance to mothers"]}
+      ]},
+      {title:"Education", type:"jobs", items:[
+        {title:"Diploma in Nursing Science and Midwifery", org:"Sample Institute of Health Technology (fictional)", period:"2022 – 2026",
+         points:["Subjects: fundamentals of nursing, medical-surgical nursing, maternal and child health, community health"]}
+      ]},
+      {title:"Certifications", type:"list", items:["Basic Life Support (BLS) – sample entry","Infection Prevention and Control Training – sample entry","Nursing council registration: DEMO-0000 (sample)"]}
+    ],
+    side:[
+      {title:"Key Skills", type:"tags", items:["Vital signs","Wound dressing","Patient hygiene care","Medication rounds (supervised)","Infection prevention","Care documentation"]},
+      {title:"Languages", type:"list", items:["Bangla – native","English – good working level"]}
+    ]
+  },
+  {
+    id:"icu", layout:"b", title:"ICU / Emergency Nurse CV",
+    blurb:"Experience-focused layout with core competencies for critical care and emergency roles.",
+    name:"Sabina Akter", role:"Registered Nurse · ICU and Emergency Care",
+    contact:["Phone: +880 1XXX-XXXXXX (sample)","Email: sabina.demo@example.com","Location: Dhaka, Bangladesh (sample)"],
+    main:[
+      {title:"Professional Profile", type:"text", text:"Registered nurse with five years of experience in intensive care and emergency settings. Skilled in ventilator care, continuous monitoring and rapid response during critical events. Calm under pressure, with strong teamwork and documentation habits."},
+      {title:"Core Competencies", type:"tags", items:["Ventilator and airway care","Cardiac (ECG) monitoring","Triage and stabilisation","IV therapy and central line care","Emergency response","Patient and family communication"]},
+      {title:"Professional Experience", type:"jobs", items:[
+        {title:"Staff Nurse – Intensive Care Unit", org:"Sample Metro General Hospital (fictional)", period:"2023 – Present",
+         points:["Care for ventilated and critically ill adult patients in a 10-bed ICU","Monitor infusions, invasive lines and vital signs, and escalate warning signs early","Assist with intubation, line care and emergency procedures","Guide junior nurses and interns on unit routines"]},
+        {title:"Staff Nurse – Emergency Department", org:"Demo Capital Specialized Hospital (fictional)", period:"2021 – 2023",
+         points:["Triaged and stabilised trauma and medical emergencies","Assisted with CPR, defibrillation and emergency medication","Coordinated patient transfers to ICU and wards"]}
+      ]},
+      {title:"Education", type:"jobs", items:[
+        {title:"BSc in Nursing", org:"Sample Nursing College (fictional)", period:"2017 – 2021", points:[]}
+      ]}
+    ],
+    side:[
+      {title:"Certifications", type:"list", items:["Basic Life Support (BLS) – sample entry","Advanced Cardiac Life Support (ACLS) – sample entry","Nursing council registration: DEMO-0000 (sample)"]},
+      {title:"Languages", type:"list", items:["Bangla – native","English – professional working level"]}
+    ]
+  },
+  {
+    id:"intl", layout:"c", title:"International Nursing CV for Gulf Jobs",
+    blurb:"Gulf-ready layout with personal details, licensing status and clear English formatting.",
+    name:"Rashed Hossain", role:"Registered Nurse · Medical-Surgical and High Dependency Care",
+    contact:["WhatsApp: +880 1XXX-XXXXXX (sample)","Email: rashed.demo@example.com","Location: Dhaka, Bangladesh (sample)"],
+    details:[["Nationality","Bangladeshi (sample)"],["Preferred destinations","UAE, Saudi Arabia, Qatar"],["Home-country registration","DEMO-0000 (sample)"],["Gulf licensing exam","Planned (sample entry)"],["Availability","30 days' notice (sample)"],["Experience","6 years (sample)"]],
+    main:[
+      {title:"Professional Summary", type:"text", text:"Registered nurse with six years of hospital experience seeking a staff nurse role with a Gulf healthcare employer. Experienced in surgical and high dependency units, with strong skills in patient safety, infection control and clear English documentation."},
+      {title:"Professional Experience", type:"jobs", items:[
+        {title:"Senior Staff Nurse – Surgical Ward", org:"Sample Metro General Hospital (fictional)", period:"2022 – Present",
+         points:["Care for pre- and post-operative patients on a 24-bed surgical ward","Lead shift handovers and keep accurate patient documentation","Follow infection control and medication safety protocols, and support unit audits"]},
+        {title:"Staff Nurse – High Dependency Unit", org:"Demo Capital Specialized Hospital (fictional)", period:"2020 – 2022",
+         points:["Monitored patients needing close observation and escalated changes promptly","Administered IV medications and managed fluid charts","Supported doctors during bedside procedures"]}
+      ]},
+      {title:"Education", type:"jobs", items:[
+        {title:"BSc in Nursing", org:"Sample Nursing College (fictional)", period:"2016 – 2020", points:[]}
+      ]}
+    ],
+    side:[
+      {title:"Key Skills", type:"tags", items:["Patient safety","Infection control","IV therapy","Wound care","Clinical documentation","Teamwork"]},
+      {title:"Certifications", type:"list", items:["Basic Life Support (BLS) – sample entry","Infection Control Training – sample entry"]},
+      {title:"Documents", type:"list", items:["Academic certificates","Experience letters","Professional references","All available on request (sample)"]}
+    ]
+  }
+];
+
+const PROFILE_DEMOS = [
+  {
+    id:"fresh", title:"Fresh Nurse Profile",
+    blurb:"A friendly, keyword-rich profile for new graduates looking for a first staff nurse role.",
+    initials:"TR", name:"Tasnia Rahman",
+    headline:"Fresh Diploma Nurse | Compassionate Patient Care | Seeking Staff Nurse Opportunities in Bangladesh and the Gulf",
+    location:"Dhaka, Bangladesh (sample location)",
+    about:"Compassionate and detail-oriented fresh diploma nurse who completed supervised clinical placements in medical-surgical and maternity care. I focus on patient safety, clear communication and learning from experienced colleagues. I am looking for my first staff nurse role and am happy to relocate for the right opportunity.",
+    experience:[
+      {title:"Nursing Intern – Clinical Placement", org:"Sample Metro General Hospital (fictional)", period:"2025 – 2026",
+       points:["Supported daily patient care, vital signs and hygiene under supervision","Practised wound dressing and medication rounds with senior nurses"]},
+      {title:"Volunteer – Community Health Awareness Camp", org:"Demo Community Clinic (fictional)", period:"2025",
+       points:["Helped with blood pressure checks and health education for local families"]}
+    ],
+    skills:["Patient Care","Vital Signs Monitoring","Wound Care","Infection Prevention","Medication Safety","Communication","Teamwork"],
+    certs:["Basic Life Support (BLS) – sample entry","Infection Prevention and Control – sample entry"]
+  },
+  {
+    id:"icu", title:"ICU Nurse Profile",
+    blurb:"An authority-building profile for experienced critical care nurses targeting international roles.",
+    initials:"NS", name:"Nabila Sultana",
+    headline:"ICU Registered Nurse | Critical Care and Emergency | Ventilator and Hemodynamic Monitoring | Open to Gulf Opportunities",
+    location:"Dhaka, Bangladesh (sample location)",
+    about:"ICU registered nurse with five years of experience caring for critically ill adult patients and responding to emergencies. Comfortable with ventilator care, continuous monitoring and working closely with doctors, families and fellow nurses. Interested in international healthcare opportunities in the Gulf region.",
+    experience:[
+      {title:"Staff Nurse – Intensive Care Unit", org:"Sample Metro General Hospital (fictional)", period:"2022 – Present",
+       points:["Provide round-the-clock care for ventilated and critically ill patients","Monitor infusions and vital signs, and communicate changes to the care team","Mentor new nurses on ICU routines and safety checks"]},
+      {title:"Staff Nurse – Emergency Department", org:"Demo Capital Specialized Hospital (fictional)", period:"2019 – 2022",
+       points:["Triaged patients and supported emergency resuscitation","Coordinated safe handover to ICU and ward teams"]}
+    ],
+    skills:["Critical Care Nursing","Ventilator Care","ECG Monitoring","Emergency Response","IV Therapy","Patient Safety","Mentoring"],
+    certs:["Basic Life Support (BLS) – sample entry","Advanced Cardiac Life Support (ACLS) – sample entry","ICU Nursing Short Course – sample entry"]
+  }
 ];
 
 /* ==========================================================
@@ -842,6 +1090,9 @@ function el(tag, props = {}, kids = []){
   }
   (Array.isArray(kids) ? kids : [kids]).forEach(function(c){ n.append(c); });
   return n;
+}
+function appendAll(parent, nodes){
+  nodes.forEach(function(n){ parent.append(n); });
 }
 function waLink(text){
   return CONFIG.WHATSAPP_URL + "?text=" + encodeURIComponent(text || CONFIG.WHATSAPP_DEFAULT_TEXT);
@@ -1170,7 +1421,8 @@ FIELDS.forEach(function(n){
   f.addEventListener("change", function(){ setErr(n, ""); });
 });
 
-/* "Order" buttons anywhere on the page pre-select the matching service */
+/* "Order" buttons anywhere on the page pre-select the matching service.
+   A button can also carry data-note to pre-fill the Details box (only if it is empty). */
 document.addEventListener("click", function(e){
   const a = e.target.closest("[data-service]");
   if (!a) return;
@@ -1180,6 +1432,10 @@ document.addEventListener("click", function(e){
   if (!known) return;
   sel.value = wanted;
   setErr("service_type", "");
+  if (a.dataset.note){
+    const d = $("#details");
+    if (!d.value.trim()){ d.value = a.dataset.note; updateCounter(); }
+  }
   if (!prefersReduced){
     sel.classList.remove("flash");
     void sel.offsetWidth;
@@ -1266,358 +1522,143 @@ form.addEventListener("submit", async function(e){
 });
 
 /* ==========================================================
-   MCQ ENGINE (reads from QUESTION_SETS above)
+   CV & PROFILE PORTFOLIO (fictional demos)
    ========================================================== */
-const quiz = {
-  catId: null, setId: null, mode: "practice",
-  set: null, questions: [], answers: [], checked: [], current: 0,
-  submitted: false, timerId: null, startedAt: 0, endsAt: 0, totalSeconds: 0, warned: false
-};
+const demoModal = $("#demoModal");
+let modalOpener = null;
 
-function showView(name){
-  $("#quizSetup").hidden = name !== "setup";
-  $("#quizRun").hidden = name !== "run";
-  $("#quizResult").hidden = name !== "result";
-}
-function setView(name){
-  showView(name);
-  const card = $("#quizCard");
-  card.scrollIntoView({behavior: prefersReduced ? "auto" : "smooth", block:"start"});
-  const target = name === "setup" ? $("#setupHeading") : (name === "run" ? $("#qText") : $("#resultHeading"));
-  if (target) target.focus({preventScroll:true});
-}
-
-function limitSeconds(set){
-  const mins = Number(set.timeLimitMinutes) > 0 ? Number(set.timeLimitMinutes) : set.questions.length * QUIZ_CONFIG.MINUTES_PER_QUESTION;
-  return Math.max(60, Math.round(mins * 60));
-}
-function currentSet(){
-  return SETS.find(function(s){ return s.id === quiz.setId; }) || null;
-}
-
-/* ----- setup screen ----- */
-function renderSetup(){
-  const body = $("#quizSetupBody"), empty = $("#quizEmpty");
-  if (!SETS.length){ body.hidden = true; empty.hidden = false; return; }
-  body.hidden = false; empty.hidden = true;
-
-  if (!quiz.catId || !setsFor(quiz.catId).length){
-    const first = QUIZ_CATEGORIES.find(function(c){ return setsFor(c.id).length > 0; });
-    quiz.catId = first ? first.id : null;
-  }
-  const cats = $("#quizCats");
-  cats.replaceChildren.apply(cats, QUIZ_CATEGORIES.map(function(c){
-    const sets = setsFor(c.id);
-    const qn = sets.reduce(function(n, s){ return n + s.questions.length; }, 0);
-    const info = sets.length
-      ? sets.length + (sets.length === 1 ? " set · " : " sets · ") + qn + " questions"
-      : "No question sets yet";
-    const b = el("button", {class:"cat-btn", type:"button", "data-cat":c.id, "aria-pressed":String(c.id === quiz.catId)}, [
-      el("span", {class:"svc-ic"}, icon(c.icon, 22)),
-      el("span", {}, [el("b", {text:c.name}), el("small", {text:info})])
-    ]);
-    if (!sets.length) b.disabled = true;
-    return b;
-  }));
-  renderSetList();
-}
-
-function renderSetList(){
-  const box = $("#quizSets");
-  const list = quiz.catId ? setsFor(quiz.catId) : [];
-  if (!list.some(function(s){ return s.id === quiz.setId; })) quiz.setId = list.length ? list[0].id : null;
-  box.replaceChildren.apply(box, list.map(function(s){
-    const input = el("input", {type:"radio", name:"quizSet", value:s.id});
-    if (s.id === quiz.setId) input.checked = true;
-    const badge = el("span", {class:"badge " + (s.verified === true ? "good" : "type"), text: s.verified === true ? "Verified" : "Demo / sample"});
-    const label = el("label", {class:"pick"}, [
-      input,
-      el("span", {class:"box"}, [
-        el("span", {class:"dot"}),
-        el("span", {}, [el("b", {text:s.subject || s.title || "Question set"}), el("small", {text:(s.title || "") + (s.title ? " · " : "") + s.questions.length + " questions"}), badge])
-      ])
-    ]);
-    return label;
-  }));
-  $("#quizStart").disabled = !quiz.setId;
-  if (!list.length) box.append(el("p", {class:"note", text:"No subjects available in this category yet."}));
-  updateTimedInfo();
-}
-
-function updateTimedInfo(){
-  const set = currentSet();
-  $("#timedInfo").textContent = set
-    ? "Countdown timer: " + Math.round(limitSeconds(set) / 60) + " min. Submits automatically at zero."
-    : "Countdown timer. Submits automatically at zero.";
-}
-
-$("#quizCats").addEventListener("click", function(e){
-  const b = e.target.closest("button[data-cat]");
-  if (!b || b.disabled) return;
-  quiz.catId = b.dataset.cat;
-  renderSetup();
-});
-$("#quizSets").addEventListener("change", function(e){
-  if (e.target.name === "quizSet"){ quiz.setId = e.target.value; updateTimedInfo(); }
-});
-document.querySelectorAll('input[name="quizMode"]').forEach(function(r){
-  r.addEventListener("change", function(){ if (r.checked) quiz.mode = r.value; });
-});
-
-/* open a category from the exam-preparation cards */
-function openQuizCategory(id){
-  if (!$("#quizRun").hidden) return;   // never interrupt a test in progress
-  showView("setup");
-  if (setsFor(id).length) quiz.catId = id;
-  renderSetup();
-}
-document.addEventListener("click", function(e){
-  const a = e.target.closest("[data-quiz-cat]");
-  if (a) openQuizCategory(a.dataset.quizCat);
-});
-
-/* ----- timer ----- */
-function stopTimer(){
-  if (quiz.timerId){ clearInterval(quiz.timerId); quiz.timerId = null; }
-}
-function tick(){
-  const left = Math.max(0, Math.ceil((quiz.endsAt - Date.now()) / 1000));
-  $("#quizTimer").textContent = fmtTime(left);
-  $("#timerBox").classList.toggle("low", left <= 60);
-  if (left <= 60 && !quiz.warned){
-    quiz.warned = true;
-    $("#quizLive").textContent = "One minute remaining.";
-  }
-  if (left <= 0) submitTest(true);
-}
-function startTimer(){
-  quiz.totalSeconds = limitSeconds(quiz.set);
-  quiz.endsAt = Date.now() + quiz.totalSeconds * 1000;
-  quiz.warned = false;
-  $("#timerBox").hidden = false;
-  tick();
-  quiz.timerId = setInterval(tick, 500);
-}
-
-/* ----- start / run ----- */
-function startQuiz(){
-  const set = currentSet();
-  if (!set) return;
-  const modeInput = document.querySelector('input[name="quizMode"]:checked');
-  quiz.mode = modeInput ? modeInput.value : "practice";
-  stopTimer();
-  quiz.set = set;
-  quiz.questions = set.questions;
-  quiz.answers = new Array(set.questions.length).fill(null);
-  quiz.checked = new Array(set.questions.length).fill(false);
-  quiz.current = 0;
-  quiz.submitted = false;
-  quiz.startedAt = Date.now();
-
-  ["btnSubmit", "btnConfirmYes", "btnPrev", "btnNext", "btnCheck"].forEach(function(id){ $("#" + id).disabled = false; });
-  $("#submitConfirm").hidden = true;
-  $("#qFeedback").hidden = true;
-  $("#quizTitle").textContent = (set.subject || "Test") + (set.title ? " – " + set.title : "");
-  $("#quizModeBadge").textContent = quiz.mode === "timed" ? "Timed Mock Test" : "Practice Mode";
-  $("#quizDemoBadge").hidden = set.verified === true;
-  $("#btnCheck").hidden = quiz.mode === "timed";
-  $("#qProgress").setAttribute("aria-valuemax", String(set.questions.length));
-  $("#timerBox").hidden = true;
-
-  setView("run");
-  if (quiz.mode === "timed") startTimer();
-  renderQuestion();
-  updateNav();
-}
-
-function updateAnswered(){
-  const done = quiz.answers.filter(function(a){ return a != null; }).length;
-  $("#qAnswered").textContent = done + " of " + quiz.questions.length + " answered";
-}
-
-function updateNav(){
-  const nav = $("#qNav");
-  nav.replaceChildren.apply(nav, quiz.questions.map(function(_, k){
-    const answered = quiz.answers[k] != null;
-    const b = el("button", {type:"button", class:"qn" + (k === quiz.current ? " cur" : "") + (answered ? " done" : ""),
-      "aria-label":"Go to question " + (k + 1) + (answered ? ", answered" : ", not answered"), text:String(k + 1)});
-    if (k === quiz.current) b.setAttribute("aria-current", "true");
-    b.addEventListener("click", function(){ goTo(k); });
-    return b;
-  }));
-  updateAnswered();
-}
-
-function goTo(k){
-  if (quiz.submitted || k < 0 || k >= quiz.questions.length) return;
-  quiz.current = k;
-  $("#submitConfirm").hidden = true;
-  renderQuestion();
-  updateNav();
-  $("#qText").focus({preventScroll:true});
-}
-
-function clearOptionMarks(){
-  document.querySelectorAll("#qChoices .opt").forEach(function(l){ l.classList.remove("correct", "wrong"); });
-}
-
-function renderQuestion(){
-  const n = quiz.questions.length, i = quiz.current, q = quiz.questions[i];
-  $("#qProgressText").textContent = "Question " + (i + 1) + " of " + n;
-  $("#qProgressBar").style.width = ((i + 1) / n * 100) + "%";
-  $("#qProgress").setAttribute("aria-valuenow", String(i + 1));
-  $("#qText").textContent = q.q;
-
-  const group = $("#qChoices");
-  group.replaceChildren.apply(group, q.options.map(function(opt, k){
-    const input = el("input", {type:"radio", name:"qopt", value:String(k)});
-    if (quiz.answers[i] === k) input.checked = true;
-    input.addEventListener("change", function(){
-      quiz.answers[i] = k;
-      quiz.checked[i] = false;
-      $("#qFeedback").hidden = true;
-      clearOptionMarks();
-      updateNav();
+/* ----- CV builder: one function renders all three layouts from data ----- */
+function cvBlock(sec){
+  const out = [el("div", {class:"st", text:sec.title})];
+  if (sec.type === "text") out.push(el("p", {text:sec.text}));
+  else if (sec.type === "tags") out.push(el("div", {class:"tags"}, sec.items.map(function(t){ return el("span", {class:"tag", text:t}); })));
+  else if (sec.type === "list") out.push(el("ul", {class:"cvl"}, sec.items.map(function(t){ return el("li", {text:t}); })));
+  else if (sec.type === "jobs"){
+    sec.items.forEach(function(j){
+      const job = el("div", {class:"job"}, [el("div", {class:"jt", text:j.title}), el("div", {class:"jo", text:j.org + " · " + j.period})]);
+      if (j.points && j.points.length) job.append(el("ul", {class:"cvl"}, j.points.map(function(p){ return el("li", {text:p}); })));
+      out.push(job);
     });
-    return el("label", {class:"pick opt"}, [
-      input,
-      el("span", {class:"box"}, [el("span", {class:"key", text:LETTERS[k]}), el("span", {text:String(opt)})])
-    ]);
-  }));
-
-  $("#btnPrev").disabled = quiz.submitted || i === 0;
-  $("#btnNext").disabled = quiz.submitted || i === n - 1;
-  $("#qFeedback").hidden = true;
-  if (quiz.checked[i]) showFeedback();
+  }
+  return out;
 }
 
-function showFeedback(){
-  const i = quiz.current, q = quiz.questions[i], fb = $("#qFeedback");
-  fb.hidden = false;
-  if (quiz.answers[i] == null){
-    fb.className = "alert bad";
-    fb.replaceChildren(icon("alert", 20), el("p", {text:"Select an answer first, then check it."}));
+function buildCv(s){
+  const root = el("div", {class:"cv cv-" + s.layout});
+  const contact = el("div", {class:"cvc"}, s.contact.map(function(c){ return el("div", {text:c}); }));
+  const nameBlock = el("div", {class:"namebl"}, [el("h4", {class:"cvname", text:s.name}), el("div", {class:"cvrole", text:s.role})]);
+  const mainBox = el("div", {class:"mainc"});
+  s.main.forEach(function(sec){ appendAll(mainBox, cvBlock(sec)); });
+  const sideBox = el("div", {class:"sidec"});
+  s.side.forEach(function(sec){ appendAll(sideBox, cvBlock(sec)); });
+  const foot = el("div", {class:"cvfoot", text:"DEMO CV – fictional sample for illustration only. Not a real person, employer or contact."});
+
+  if (s.layout === "a"){
+    const side = el("div", {class:"side"}, [el("div", {class:"st", text:"Contact"}), contact]);
+    appendAll(side, Array.prototype.slice.call(sideBox.childNodes));
+    mainBox.prepend(nameBlock);
+    mainBox.append(foot);
+    root.append(side, mainBox);
+  } else if (s.layout === "b"){
+    const head = el("div", {class:"head"}, [nameBlock, contact]);
+    const body = el("div", {class:"cbody"}, [mainBox, sideBox, foot]);
+    root.append(head, body);
+  } else {
+    const details = el("div", {class:"details"}, (s.details || []).map(function(d){ return el("div", {}, [el("b", {text:d[0]}), d[1]]); }));
+    const head = el("div", {class:"head"}, [nameBlock, contact, details]);
+    mainBox.append(foot);
+    root.append(head, el("div", {class:"cbody"}, [mainBox, sideBox]));
+  }
+  root.append(el("div", {class:"demo-tag", text:"DEMO CV"}), el("div", {class:"wm"}, el("span", {text:"DEMO CV"})));
+  return root;
+}
+
+/* ----- LinkedIn-style profile builder ----- */
+function liHeader(p){
+  return el("div", {}, [
+    el("div", {class:"li-banner"}, el("span", {class:"badge type", text:"FICTIONAL DEMO"})),
+    el("div", {class:"li-head"}, [
+      el("div", {class:"li-avatar", "aria-hidden":"true", text:p.initials}),
+      el("div", {class:"li-name", text:p.name}),
+      el("p", {class:"li-headline", text:p.headline}),
+      el("p", {class:"li-loc", text:p.location})
+    ])
+  ]);
+}
+function liSection(title, content){
+  return el("div", {class:"li-sec"}, [el("h4", {text:title}), content]);
+}
+function buildProfile(p, full){
+  const root = el("div", {class:"li" + (full ? " li-full" : "")}, [liHeader(p)]);
+  if (!full){
+    root.append(el("div", {class:"li-sec"}, [
+      el("p", {class:"li-snip", text:p.about}),
+      el("div", {class:"li-chips"}, p.skills.slice(0, 4).map(function(t){ return el("span", {class:"li-chip", text:t}); }))
+    ]));
+    return root;
+  }
+  root.append(liSection("About", el("p", {class:"li-about", text:p.about})));
+  root.append(liSection("Experience", el("div", {}, p.experience.map(function(x){
+    const info = el("div", {}, [el("b", {text:x.title}), el("div", {class:"posted", text:x.org + " · " + x.period})]);
+    if (x.points && x.points.length) info.append(el("ul", {}, x.points.map(function(pt){ return el("li", {text:pt}); })));
+    return el("div", {class:"li-exp"}, [el("span", {class:"li-logo", "aria-hidden":"true"}, icon("hospital", 20)), info]);
+  }))));
+  root.append(liSection("Skills", el("div", {class:"li-chips"}, p.skills.map(function(t){ return el("span", {class:"li-chip", text:t}); }))));
+  root.append(liSection("Certifications", el("ul", {class:"li-list"}, p.certs.map(function(t){ return el("li", {text:t}); }))));
+  root.append(el("p", {class:"note li-note", text:"Fictional demo for illustration. This is not a real person or a real LinkedIn account, and HealthJob Global is not affiliated with LinkedIn."}));
+  return root;
+}
+
+/* ----- scaling CVs to fit their container ----- */
+function fitThumb(th){
+  const cv = th.firstElementChild;
+  if (!cv) return;
+  cv.style.transform = "scale(" + (th.clientWidth / 600) + ")";
+}
+function fitStage(stage){
+  const cv = stage.firstElementChild;
+  if (!cv) return;
+  if (window.matchMedia("(max-width:700px)").matches){
+    cv.style.transform = "";
+    stage.style.width = "";
+    stage.style.height = "";
     return;
   }
-  quiz.checked[i] = true;
-  const ok = quiz.answers[i] === q.answer;
-  document.querySelectorAll("#qChoices .opt").forEach(function(l, k){
-    l.classList.toggle("correct", k === q.answer);
-    l.classList.toggle("wrong", k === quiz.answers[i] && k !== q.answer);
-  });
-  fb.className = "alert " + (ok ? "ok" : "bad");
-  const lines = [el("p", {}, [el("b", {text: ok ? "Correct. " : "Not quite. "}), ok ? "" : "Correct answer: " + LETTERS[q.answer] + ". " + q.options[q.answer]])];
-  if (q.explanation) lines.push(el("p", {text:q.explanation}));
-  fb.replaceChildren(icon(ok ? "checkCircle" : "alert", 20), el("div", {}, lines));
+  const avail = stage.parentElement.clientWidth - 32;
+  const s = Math.min(1.3, Math.max(0.5, avail / 600));
+  stage.style.width = Math.round(600 * s) + "px";
+  cv.style.transform = "scale(" + s + ")";
+  stage.style.height = Math.round(cv.offsetHeight * s) + "px";
 }
-
-$("#btnPrev").addEventListener("click", function(){ goTo(quiz.current - 1); });
-$("#btnNext").addEventListener("click", function(){ goTo(quiz.current + 1); });
-$("#btnCheck").addEventListener("click", function(){ if (!quiz.submitted) showFeedback(); });
-$("#quizStart").addEventListener("click", startQuiz);
-
-/* ----- submit ----- */
-$("#btnSubmit").addEventListener("click", function(){
-  if (quiz.submitted) return;
-  const un = quiz.answers.filter(function(a){ return a == null; }).length;
-  if (un > 0){
-    $("#submitMsg").textContent = "You have " + un + (un === 1 ? " unanswered question." : " unanswered questions.") + " Unanswered questions score zero. Submit anyway?";
-    $("#submitConfirm").hidden = false;
-    $("#btnConfirmYes").focus();
-  } else {
-    submitTest(false);
-  }
-});
-$("#btnConfirmYes").addEventListener("click", function(){ submitTest(false); });
-$("#btnConfirmNo").addEventListener("click", function(){
-  $("#submitConfirm").hidden = true;
-  $("#btnSubmit").focus();
-});
-
-function submitTest(auto){
-  if (quiz.submitted) return;       // prevents double submission (button + timer)
-  quiz.submitted = true;
-  stopTimer();
-  ["btnSubmit", "btnConfirmYes", "btnPrev", "btnNext", "btnCheck"].forEach(function(id){ $("#" + id).disabled = true; });
-  $("#submitConfirm").hidden = true;
-  const used = quiz.mode === "timed" ? Math.min(quiz.totalSeconds, Math.round((Date.now() - quiz.startedAt) / 1000)) : null;
-  renderResults(auto, used);
-  setView("result");
+function fitAll(){
+  document.querySelectorAll(".cv-thumb").forEach(fitThumb);
+  const stage = document.querySelector("#demoModalBody .cv-stage");
+  if (stage && demoModal.open) fitStage(stage);
 }
-
-function renderResults(auto, usedSeconds){
-  const n = quiz.questions.length;
-  let correct = 0, wrong = 0, skipped = 0;
-  quiz.questions.forEach(function(q, i){
-    const a = quiz.answers[i];
-    if (a == null) skipped++;
-    else if (a === q.answer) correct++;
-    else wrong++;
-  });
-  const pct = Math.round(correct / n * 100);
-  $("#scoreRing").style.setProperty("--p", String(pct));
-  $("#scorePct").textContent = pct + "%";
-  $("#scoreText").textContent = correct + " / " + n;
-  $("#statCorrect").textContent = String(correct);
-  $("#statWrong").textContent = String(wrong);
-  $("#statSkipped").textContent = String(skipped);
-  $("#resultSub").textContent = ($("#quizTitle").textContent || "Test") + " · " + (quiz.mode === "timed" ? "Timed Mock Test" : "Practice Mode") +
-    (usedSeconds != null ? " · Time used " + fmtTime(usedSeconds) : "");
-
-  const notes = [];
-  if (auto) notes.push("Time ran out, so your test was submitted automatically.");
-  if (quiz.set.verified !== true) notes.push("This was a demo set of sample questions. The result does not reflect real exam performance or guarantee exam success.");
-  const noteBox = $("#resultNote");
-  noteBox.hidden = notes.length === 0;
-  noteBox.replaceChildren(icon("info", 20), el("div", {}, notes.map(function(t){ return el("p", {text:t}); })));
-
-  const list = $("#reviewList");
-  list.replaceChildren.apply(list, quiz.questions.map(function(q, i){
-    const a = quiz.answers[i];
-    const status = a == null ? "skipped" : (a === q.answer ? "correct" : "wrong");
-    const label = status === "correct" ? "Correct" : (status === "wrong" ? "Incorrect" : "Not answered");
-    const card = el("article", {class:"review " + status}, [
-      el("div", {class:"meta"}, [
-        el("span", {class:"badge " + (status === "correct" ? "good" : (status === "wrong" ? "bad" : "exp")), text:label}),
-        el("span", {class:"posted", text:"Question " + (i + 1)})
-      ]),
-      el("p", {class:"rq", text:q.q}),
-      el("p", {}, [el("b", {text:"Your answer: "}), a == null ? "Not answered" : LETTERS[a] + ". " + q.options[a]]),
-      el("p", {}, [el("b", {text:"Correct answer: "}), LETTERS[q.answer] + ". " + q.options[q.answer]])
-    ]);
-    if (q.explanation) card.append(el("p", {class:"rexp"}, [el("b", {text:"Explanation: "}), q.explanation]));
-    return card;
-  }));
-}
-
-document.querySelectorAll(".js-retry").forEach(function(b){ b.addEventListener("click", startQuiz); });
-document.querySelectorAll(".js-back").forEach(function(b){
-  b.addEventListener("click", function(){
-    stopTimer();
-    renderSetup();
-    setView("setup");
-  });
+let fitTimer = null;
+window.addEventListener("resize", function(){
+  if (fitTimer) cancelAnimationFrame(fitTimer);
+  fitTimer = requestAnimationFrame(fitAll);
 });
+window.addEventListener("load", fitAll);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
 
-/* hide the floating WhatsApp button while the order form or a test is on screen */
-(function floatWatcher(){
-  const float = $(".wa-float");
-  if (!float || !("IntersectionObserver" in window)) return;
-  const visible = new Set();
-  const io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target);
-    });
-    float.classList.toggle("hide", visible.size > 0);
-  }, {threshold: 0.05});
-  io.observe(form);
-  io.observe($("#quizCard"));
-})();
+/* ----- gallery cards ----- */
+function buildPortfolio(){
+  const cvGrid = $("#cvGrid");
+  CV_SAMPLES.forEach(function(s){
+    const thumb = el("div", {class:"cv-thumb", "aria-hidden":"true"}, [buildCv(s)]);
+    thumb.setAttribute("inert", "");
+    const view = el("button", {class:"btn btn-ghost sm", type:"button", "data-open-cv":s.id, "aria-label":"View Sample: " + s.title}, [icon("search", 16), "View Sample"]);
+    const order = el("a", {class:"btn btn-primary sm", href:"#order", "data-service":"CV and Resume Writing", "data-note":"I would like a CV similar to the sample: " + s.title + "."}, [icon("arrowRight", 16), "Order Your CV"]);
+    cvGrid.append(el("article", {class:"card"}, [
+      thumb,
+      el("div", {class:"meta"}, [el("span", {class:"badge type", text:"DEMO CV"}), el("span", {class:"badge", text:"Fictional sample"})]),
+      el("h3", {text:s.title}),
+      el("p", {class:"blurb", text:s.blurb}),
+      el("div", {class:"actions"}, [view, order])
+    ]));
+  });
 
-/* ---------- start ---------- */
-updateCounter();
-renderSetup();
-loadJobs();
-</script>
-</body>
-</html>
+  const liGrid = $("#liGrid");
+  PROFILE_DEMOS.forEach(fu
